@@ -308,7 +308,7 @@ void InstanceManagerDialog::select(std::size_t i)
     fillData(*ii);
 
     ui->list->selectionModel()->select(
-        m_filter.mapFromSource(m_filter.sourceModel()->index(i, 0)),
+        m_filter.mapFromSource(m_filter.sourceModel()->index(static_cast<int>(i), 0)),
         QItemSelectionModel::ClearAndSelect);
   } else {
     clearData();
@@ -336,7 +336,8 @@ void InstanceManagerDialog::selectActiveInstance()
       if (m_instances[i]->displayName() == active->displayName()) {
         select(i);
 
-        ui->list->scrollTo(m_filter.mapFromSource(m_filter.sourceModel()->index(i, 0)));
+        ui->list->scrollTo(m_filter.mapFromSource(
+            m_filter.sourceModel()->index(static_cast<int>(i), 0)));
 
         return;
       }
@@ -449,7 +450,7 @@ void InstanceManagerDialog::rename()
   auto newInstance = std::make_unique<Instance>(dest, false);
   i                = newInstance.get();
 
-  m_model->item(selIndex)->setText(newName);
+  m_model->item(static_cast<int>(selIndex))->setText(newName);
   m_instances[selIndex] = std::move(newInstance);
 
   fillData(*i);

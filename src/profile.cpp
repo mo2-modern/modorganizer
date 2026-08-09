@@ -519,7 +519,7 @@ void Profile::refreshModStatus()
     }
 
     if (modInfo->isOverwrite()) {
-      m_ModStatus[i].m_Priority = m_ModStatus.size() - 1;
+      m_ModStatus[i].m_Priority = static_cast<int>(m_ModStatus.size()) - 1;
       continue;
     }
 
@@ -561,7 +561,7 @@ void Profile::refreshModStatus()
   }
 
   // set the backups priority
-  int backupPriority = m_NumRegularMods;
+  int backupPriority = static_cast<int>(m_NumRegularMods);
   for (size_t i = 0; i < m_ModStatus.size(); ++i) {
     ModInfo::Ptr modInfo = ModInfo::getByIndex(static_cast<unsigned int>(i));
     if (modInfo->isBackup()) {
@@ -871,9 +871,9 @@ bool Profile::enableLocalSaves(bool enable)
            "games)"),
         QDialogButtonBox::No | QDialogButtonBox::Yes | QDialogButtonBox::Cancel,
         QDialogButtonBox::No);
-    if (res == QMessageBox::Yes) {
+    if (res == QDialogButtonBox::Yes) {
       shellDelete(QStringList(m_Directory.absoluteFilePath("saves")), true);
-    } else if (res == QMessageBox::No) {
+    } else if (res == QDialogButtonBox::No) {
       // No action
     } else {
       return false;
@@ -927,13 +927,13 @@ bool Profile::enableLocalSettings(bool enable)
                                    QDialogButtonBox::No | QDialogButtonBox::Yes |
                                        QDialogButtonBox::Cancel,
                                    QDialogButtonBox::No);
-    if (res == QMessageBox::Yes) {
+    if (res == QDialogButtonBox::Yes) {
       QStringList filesToDelete;
       for (QString file : m_GamePlugin->iniFiles()) {
         filesToDelete << m_Directory.absoluteFilePath(QFileInfo(file).fileName());
       }
       shellDelete(filesToDelete, true);
-    } else if (res == QMessageBox::No) {
+    } else if (res == QDialogButtonBox::No) {
       // No action
     } else {
       return false;

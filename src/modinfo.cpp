@@ -95,7 +95,7 @@ ModInfo::Ptr ModInfo::createFrom(const QDir& dir, OrganizerCore& core)
   } else {
     result = ModInfo::Ptr(new ModInfoRegular(dir, core));
   }
-  result->m_Index = s_Collection.size();
+  result->m_Index = static_cast<int>(s_Collection.size());
   s_Collection.push_back(result);
   return result;
 }
@@ -107,7 +107,7 @@ ModInfo::Ptr ModInfo::createFromPlugin(const QString& modName, const QString& es
   QMutexLocker locker(&s_Mutex);
   ModInfo::Ptr result =
       ModInfo::Ptr(new ModInfoForeign(modName, espName, bsaNames, modType, core));
-  result->m_Index = s_Collection.size();
+  result->m_Index = static_cast<int>(s_Collection.size());
   s_Collection.push_back(result);
   return result;
 }
@@ -116,7 +116,7 @@ ModInfo::Ptr ModInfo::createFromOverwrite(OrganizerCore& core)
 {
   QMutexLocker locker(&s_Mutex);
   ModInfo::Ptr overwrite = ModInfo::Ptr(new ModInfoOverwrite(core));
-  overwrite->m_Index     = s_Collection.size();
+  overwrite->m_Index     = static_cast<int>(s_Collection.size());
   s_Collection.push_back(overwrite);
   return overwrite;
 }

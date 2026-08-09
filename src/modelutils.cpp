@@ -10,7 +10,7 @@ QModelIndexList flatIndex(const QAbstractItemModel* model, int column,
 {
   QModelIndexList index;
   for (std::size_t i = 0; i < model->rowCount(parent); ++i) {
-    index.append(model->index(i, column, parent));
+    index.append(model->index(static_cast<int>(i), column, parent));
     index.append(flatIndex(model, column, index.back()));
   }
   return index;
@@ -26,7 +26,7 @@ static QModelIndexList visibleIndexImpl(QTreeView* view, int column,
   auto* model = view->model();
   QModelIndexList index;
   for (std::size_t i = 0; i < model->rowCount(parent); ++i) {
-    index.append(model->index(i, column, parent));
+    index.append(model->index(static_cast<int>(i), column, parent));
     index.append(visibleIndexImpl(view, column, index.back()));
   }
   return index;

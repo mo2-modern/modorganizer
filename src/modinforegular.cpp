@@ -19,16 +19,6 @@
 using namespace MOBase;
 using namespace MOShared;
 
-namespace
-{
-// Arguably this should be a class static or we should be using FileString rather
-// than QString for the names. Or both.
-static bool ByName(const ModInfo::Ptr& LHS, const ModInfo::Ptr& RHS)
-{
-  return QString::compare(LHS->name(), RHS->name(), Qt::CaseInsensitive) < 0;
-}
-}  // namespace
-
 ModInfoRegular::ModInfoRegular(const QDir& path, OrganizerCore& core)
     : ModInfoWithConflictInfo(core), m_Name(path.dirName()),
       m_Path(path.absolutePath()), m_Repository(),

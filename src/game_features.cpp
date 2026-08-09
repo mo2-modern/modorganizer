@@ -322,7 +322,7 @@ int GameFeatures::unregisterGameFeatures(MOBase::IPlugin* plugin,
                                 }),
                  features.end());
 
-  const int removed = features.size() - initialSize;
+  const int removed = static_cast<int>(initialSize - features.size());
 
   if (removed) {
     updateCurrentFeatures();

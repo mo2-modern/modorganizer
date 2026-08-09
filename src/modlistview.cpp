@@ -1179,8 +1179,8 @@ QColor ModListView::markerColor(const QModelIndex& index) const
       a += color.alpha();
     }
 
-    return QColor(r / colors.size(), g / colors.size(), b / colors.size(),
-                  a / colors.size());
+    const int n = static_cast<int>(colors.size());
+    return QColor(r / n, g / n, b / n, a / n);
   }
 
   return QColor();

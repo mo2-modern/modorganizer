@@ -13,7 +13,7 @@ DisableProxyPluginDialog::DisableProxyPluginDialog(
 
   ui->topLabel->setText(QObject::tr("Disabling the '%1' plugin will prevent the "
                                     "following %2 plugin(s) from working:",
-                                    "", required.size())
+                                    "", static_cast<int>(required.size()))
                             .arg(proxyPlugin->localizedName())
                             .arg(required.size()));
 
@@ -21,7 +21,7 @@ DisableProxyPluginDialog::DisableProxyPluginDialog(
   connect(ui->yesBtn, &QPushButton::clicked, this, &QDialog::accept);
 
   ui->requiredPlugins->setSelectionMode(QAbstractItemView::NoSelection);
-  ui->requiredPlugins->setRowCount(required.size());
+  ui->requiredPlugins->setRowCount(static_cast<int>(required.size()));
   for (int i = 0; i < required.size(); ++i) {
     ui->requiredPlugins->setItem(i, 0,
                                  new QTableWidgetItem(required[i]->localizedName()));
