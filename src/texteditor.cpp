@@ -118,9 +118,9 @@ bool TextEditor::save()
     flags |= QStringConverter::Flag::WriteBom;
   QStringEncoder encoder(codec.value(), flags);
 
-  QString data = toPlainText().replace("\n", "\r\n");
+  QString text = toPlainText().replace("\n", "\r\n");
 
-  file.write(encoder.encode(data));
+  file.write(encoder.encode(text));
   document()->setModified(false);
 
   return true;

@@ -33,17 +33,15 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 
 using namespace MOBase;
 
-CategoryFactory* CategoryFactory::s_Instance = nullptr;
-
 QString CategoryFactory::categoriesFilePath()
 {
   return qApp->property("dataPath").toString() + "/categories.dat";
 }
 
-CategoryFactory::CategoryFactory() : QObject()
-{
-  atexit(&cleanup);
-}
+// the singleton is the function-local static in instance(); there used to be a
+// static CategoryFactory* s_Instance alongside it that was never assigned, plus
+// a cleanup() registered with atexit that deleted it -- both were no-ops
+CategoryFactory::CategoryFactory() : QObject() {}
 
 QString CategoryFactory::nexusMappingFilePath()
 {
@@ -177,12 +175,6 @@ void CategoryFactory::setParents()
       }
     }
   }
-}
-
-void CategoryFactory::cleanup()
-{
-  delete s_Instance;
-  s_Instance = nullptr;
 }
 
 void CategoryFactory::saveCategories()

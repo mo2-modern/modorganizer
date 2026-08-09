@@ -38,21 +38,21 @@ SelectionDialog::~SelectionDialog()
 }
 
 void SelectionDialog::addChoice(const QString& buttonText, const QString& description,
-                                const QVariant& data)
+                                const QVariant& userData)
 {
   QAbstractButton* button =
       new QCommandLinkButton(buttonText, description, ui->buttonBox);
   if (m_IconSize.isValid()) {
     button->setIconSize(m_IconSize);
   }
-  button->setProperty("data", data);
+  button->setProperty("data", userData);
   ui->buttonBox->addButton(button, QDialogButtonBox::AcceptRole);
-  if (data.isValid())
+  if (userData.isValid())
     m_ValidateByData = true;
 }
 
 void SelectionDialog::addChoice(const QIcon& icon, const QString& buttonText,
-                                const QString& description, const QVariant& data)
+                                const QString& description, const QVariant& userData)
 {
   QAbstractButton* button =
       new QCommandLinkButton(buttonText, description, ui->buttonBox);
@@ -60,9 +60,9 @@ void SelectionDialog::addChoice(const QIcon& icon, const QString& buttonText,
     button->setIconSize(m_IconSize);
   }
   button->setIcon(icon);
-  button->setProperty("data", data);
+  button->setProperty("data", userData);
   ui->buttonBox->addButton(button, QDialogButtonBox::AcceptRole);
-  if (data.isValid())
+  if (userData.isValid())
     m_ValidateByData = true;
 }
 

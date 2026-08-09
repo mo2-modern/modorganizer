@@ -3076,16 +3076,16 @@ void MainWindow::updateSortButton()
 
 void MainWindow::nxmEndorsementsAvailable(QVariant, QVariant resultData, int)
 {
-  QVariantList data = resultData.toList();
+  QVariantList endorsements = resultData.toList();
   std::multimap<QString, std::pair<int, QString>> sorted;
   QStringList games = m_OrganizerCore.managedGame()->validShortNames();
   games += m_OrganizerCore.managedGame()->gameShortName();
-  for (auto endorsementData : data) {
-    QVariantMap endorsement      = endorsementData.toMap();
-    std::pair<int, QString> data = std::make_pair<int, QString>(
+  for (auto endorsementData : endorsements) {
+    QVariantMap endorsement       = endorsementData.toMap();
+    std::pair<int, QString> entry = std::make_pair<int, QString>(
         endorsement["mod_id"].toInt(), endorsement["status"].toString());
     sorted.insert(std::pair<QString, std::pair<int, QString>>(
-        endorsement["domain_name"].toString(), data));
+        endorsement["domain_name"].toString(), entry));
   }
   for (auto game : games) {
     IPluginGame* gamePlugin = m_OrganizerCore.getGame(game);
@@ -3148,22 +3148,22 @@ void MainWindow::nxmUpdateInfoAvailable(QString gameName, QVariant userData,
   ui->modList->invalidateFilter();
 }
 
-void MainWindow::finishUpdateInfo(const NxmUpdateInfoData& data)
+void MainWindow::finishUpdateInfo(const NxmUpdateInfoData& info)
 {
-  if (data.finalMods.empty()) {
+  if (info.finalMods.empty()) {
     log::info("{}", tr("None of your %1 mods appear to have had recent file updates.")
-                        .arg(data.game));
+                        .arg(info.game));
   }
 
   std::set<std::pair<QString, int>> organizedGames;
-  for (auto& mod : data.finalMods) {
+  for (auto& mod : info.finalMods) {
     if (mod->canBeUpdated()) {
       organizedGames.insert(
           std::make_pair<QString, int>(mod->gameName().toLower(), mod->nexusId()));
     }
   }
 
-  if (!data.finalMods.empty() && organizedGames.empty())
+  if (!info.finalMods.empty() && organizedGames.empty())
     log::warn("{}", tr("All of your mods have been checked recently. We restrict "
                        "update checks to help preserve your available API requests."));
 

@@ -218,11 +218,11 @@ std::optional<bool> WindowsInfo::getElevated() const
   DWORD size        = sizeof(TOKEN_ELEVATION);
 
   if (!GetTokenInformation(token.get(), TokenElevation, &e, sizeof(e), &size)) {
-    const auto e = GetLastError();
+    const auto err = GetLastError();
 
     log::error("while trying to check if process is elevated, "
                "GetTokenInformation() failed: {}",
-               formatSystemMessage(e));
+               formatSystemMessage(err));
 
     return {};
   }

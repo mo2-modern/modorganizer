@@ -362,13 +362,13 @@ std::string CommandLine::usage(const Command* c) const
 
     // name and description for all commands
     std::vector<std::pair<std::string, std::string>> v;
-    for (auto&& c : m_commands) {
+    for (auto&& cmd : m_commands) {
       // don't show legacy commands
-      if (c->legacy()) {
+      if (cmd->legacy()) {
         continue;
       }
 
-      v.push_back({c->name(), c->description()});
+      v.push_back({cmd->name(), cmd->description()});
     }
 
     oss << table(v, 2, 4) << "\n"

@@ -1078,9 +1078,9 @@ void NexusInterface::requestFinished(std::list<NXMRequestInfo>::iterator iter)
       if (!data.isEmpty()) {
         QJsonDocument responseDoc = QJsonDocument::fromJson(data);
         if (!responseDoc.isNull()) {
-          auto result = responseDoc.toVariant().toMap();
-          auto error  = result.find("error");
-          if (error != result.end())
+          auto result    = responseDoc.toVariant().toMap();
+          auto errorItor = result.find("error");
+          if (errorItor != result.end())
             errorMsg = result.value("error").toString();
         }
       }

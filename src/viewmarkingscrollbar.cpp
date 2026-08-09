@@ -15,9 +15,9 @@ ViewMarkingScrollBar::ViewMarkingScrollBar(QTreeView* view, int role)
 
 QColor ViewMarkingScrollBar::color(const QModelIndex& index) const
 {
-  auto data = index.data(m_role);
-  if (data.canConvert<QColor>()) {
-    return data.value<QColor>();
+  auto value = index.data(m_role);
+  if (value.canConvert<QColor>()) {
+    return value.value<QColor>();
   }
   return QColor();
 }

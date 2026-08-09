@@ -320,10 +320,10 @@ void CategoriesDialog::nexusImport_clicked()
       QStringList nexusLabel;
       QVariantList nexusData;
       nexusLabel.append(name);
-      QVariantList data;
-      data.append(QVariant(name));
-      data.append(QVariant(nexusID));
-      nexusData.insert(nexusData.size(), data);
+      QVariantList catEntry;
+      catEntry.append(QVariant(name));
+      catEntry.append(QVariant(nexusID));
+      nexusData.insert(nexusData.size(), catEntry);
       std::unique_ptr<QTableWidgetItem> nexusCatItem(
           new QTableWidgetItem(nexusLabel.join(", ")));
       nexusCatItem->setData(Qt::UserRole, nexusData);

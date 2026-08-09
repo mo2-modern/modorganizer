@@ -21,7 +21,7 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 
 CategoriesTable::CategoriesTable(QWidget* parent) : QTableWidget(parent) {}
 
-bool CategoriesTable::dropMimeData(int row, int, const QMimeData* data,
+bool CategoriesTable::dropMimeData(int row, int, const QMimeData* mimeData,
                                    Qt::DropAction action)
 {
   if (row == -1)
@@ -30,10 +30,10 @@ bool CategoriesTable::dropMimeData(int row, int, const QMimeData* data,
   if (action == Qt::IgnoreAction)
     return true;
 
-  if (!data->hasFormat("application/x-qabstractitemmodeldatalist"))
+  if (!mimeData->hasFormat("application/x-qabstractitemmodeldatalist"))
     return false;
 
-  QByteArray encoded = data->data("application/x-qabstractitemmodeldatalist");
+  QByteArray encoded = mimeData->data("application/x-qabstractitemmodeldatalist");
   QDataStream stream(&encoded, QIODevice::ReadOnly);
 
   while (!stream.atEnd()) {
