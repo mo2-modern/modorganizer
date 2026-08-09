@@ -19,6 +19,10 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "downloadmanager.h"
 
+// TU-local: keeping this out of the header stops boost::accumulators
+// extractors (count, max, min, sum, ...) leaking into every includer
+using namespace boost::accumulators;
+
 #include "bbcode.h"
 #include "envfs.h"
 #include "filesystemutilities.h"
@@ -1089,10 +1093,10 @@ void DownloadManager::resumeDownloadInt(DownloadID id)
     }
     info->m_DownloadLast     = 0;
     info->m_DownloadTimeLast = 0;
-    info->m_DownloadAcc      = accumulator_set<qint64, stats<tag::rolling_mean>>(
-        tag::rolling_window::window_size = 200);
-    info->m_DownloadTimeAcc = accumulator_set<qint64, stats<tag::rolling_mean>>(
-        tag::rolling_window::window_size = 200);
+    info->m_DownloadAcc =
+        DownloadInfo::RollingMeanAcc(tag::rolling_window::window_size = 200);
+    info->m_DownloadTimeAcc =
+        DownloadInfo::RollingMeanAcc(tag::rolling_window::window_size = 200);
     log::debug("resume at {} bytes", info->m_ResumePos);
     startDownload(m_NexusInterface->getAccessManager()->get(request), info, true);
   }

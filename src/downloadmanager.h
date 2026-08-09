@@ -42,7 +42,6 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 #include <modrepositoryfileinfo.h>
 #include <optional>
 #include <set>
-using namespace boost::accumulators;
 
 namespace MOBase
 {
@@ -183,8 +182,13 @@ private:
   struct DownloadInfo
   {
     ~DownloadInfo() { delete m_FileInfo; }
-    accumulator_set<qint64, stats<tag::rolling_mean>> m_DownloadAcc;
-    accumulator_set<qint64, stats<tag::rolling_mean>> m_DownloadTimeAcc;
+    // a global `using namespace boost::accumulators;` used to live in this
+    // header, which leaked count/max/min/sum into every TU that included it
+    using RollingMeanAcc = boost::accumulators::accumulator_set<
+        qint64, boost::accumulators::stats<boost::accumulators::tag::rolling_mean>>;
+
+    RollingMeanAcc m_DownloadAcc;
+    RollingMeanAcc m_DownloadTimeAcc;
     qint64 m_DownloadLast;
     qint64 m_DownloadTimeLast;
     DownloadID m_DownloadID;
@@ -263,8 +267,8 @@ private:
     DownloadInfo()
         : m_TotalSize(0), m_ReQueried(false), m_Hidden(false), m_HasData(false),
           m_AskIfNotFound(true), m_DownloadTimeLast(0), m_DownloadLast(0),
-          m_DownloadAcc(tag::rolling_window::window_size = 200),
-          m_DownloadTimeAcc(tag::rolling_window::window_size = 200)
+          m_DownloadAcc(boost::accumulators::tag::rolling_window::window_size = 200),
+          m_DownloadTimeAcc(boost::accumulators::tag::rolling_window::window_size = 200)
     {}
   };
 
