@@ -185,7 +185,7 @@ void SelfUpdater::startUpdate()
   // it:
   dialog.setChangeLogs(details);
 
-  int res = dialog.exec();
+  dialog.exec();
 
   if (dialog.result() == QDialog::Accepted) {
     bool found = false;

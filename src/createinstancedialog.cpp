@@ -188,7 +188,6 @@ void CreateInstanceDialog::next(bool allowFinish)
     return;
   }
 
-  const auto i    = ui->pages->currentIndex();
   const auto last = isOnLastPage();
 
   if (last) {
@@ -301,7 +300,6 @@ void CreateInstanceDialog::finish()
   ui->creationLog->clear();
   logCreation(tr("Creating instance..."));
 
-  const auto& m = InstanceManager::singleton();
   const auto ci = creationInfo();
 
   auto logger = [&](QString s) {
@@ -431,7 +429,6 @@ void CreateInstanceDialog::selectPage(std::size_t i)
 
 void CreateInstanceDialog::updateNavigation()
 {
-  const auto i    = ui->pages->currentIndex();
   const auto last = isOnLastPage();
 
   ui->next->setEnabled(canNext());

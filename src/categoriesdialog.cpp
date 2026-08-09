@@ -362,10 +362,9 @@ void CategoriesDialog::nexusImport_clicked()
 
 void CategoriesDialog::nxmGameInfoAvailable(QString, QVariant, QVariant resultData, int)
 {
-  QVariantMap result          = resultData.toMap();
-  QVariantList categories     = result["categories"].toList();
-  CategoryFactory& catFactory = CategoryFactory::instance();
-  QListWidget* list           = ui->nexusCategoryList;
+  QVariantMap result      = resultData.toMap();
+  QVariantList categories = result["categories"].toList();
+  QListWidget* list       = ui->nexusCategoryList;
   list->clear();
   for (const auto& category : categories) {
     auto catMap = category.toMap();

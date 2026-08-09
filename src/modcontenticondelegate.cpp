@@ -40,10 +40,7 @@ bool ModContentIconDelegate::helpEvent(QHelpEvent* event, QAbstractItemView* vie
   if (event->type() == QEvent::ToolTip) {
     // this code is from QAbstractItemDelegate::helpEvent, only the the way
     // text is retrieved has been changed
-    QHelpEvent* he      = static_cast<QHelpEvent*>(event);
-    const int precision = inherits("QItemDelegate")
-                              ? 10
-                              : 6;  // keep in sync with DBL_DIG in qitemdelegate.cpp
+    QHelpEvent* he = static_cast<QHelpEvent*>(event);
     const QString tooltip =
         index.isValid() ? m_view->contentsTooltip(index) : QString();
     QRect rect;

@@ -257,8 +257,10 @@ Environment::onModuleLoaded(QObject* o, std::function<void(Module)> f)
       ULONG Flags, PLDR_DLL_NOTIFICATION_FUNCTION NotificationFunction, PVOID Context,
       PVOID * Cookie);
 
-  const ULONG LDR_DLL_NOTIFICATION_REASON_LOADED   = 1;
-  const ULONG LDR_DLL_NOTIFICATION_REASON_UNLOADED = 2;
+  const ULONG LDR_DLL_NOTIFICATION_REASON_LOADED = 1;
+  // kept alongside the LOADED value above to document the API, though only
+  // LOADED is dispatched on below
+  [[maybe_unused]] const ULONG LDR_DLL_NOTIFICATION_REASON_UNLOADED = 2;
 
   // loading ntdll.dll, the function will be found with GetProcAddress()
   LibraryPtr ntdll(LoadLibraryW(L"ntdll.dll"));

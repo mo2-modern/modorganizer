@@ -303,7 +303,6 @@ void SetThisThreadName(const QString& s)
 char shortcutChar(const QAction* a)
 {
   const auto text = a->text();
-  char shortcut   = 0;
 
   for (int i = 0; i < text.size(); ++i) {
     const auto c = text[i];

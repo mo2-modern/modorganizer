@@ -674,8 +674,7 @@ InstallationResult InstallationManager::install(const QString& fileName,
           "This Nexus category has not yet been mapped. Do you wish to proceed without "
           "setting a category, proceed and disable automatic Nexus mappings, or stop "
           "and configure your category mappings?"));
-      QPushButton* proceedButton =
-          nexusQuery.addButton(tr("&Proceed"), QMessageBox::YesRole);
+      nexusQuery.addButton(tr("&Proceed"), QMessageBox::YesRole);
       QPushButton* disableButton =
           nexusQuery.addButton(tr("&Disable"), QMessageBox::AcceptRole);
       QPushButton* stopButton =

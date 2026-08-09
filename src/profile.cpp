@@ -898,15 +898,14 @@ bool Profile::localSettingsEnabled() const
     }
     if (!missingFiles.empty()) {
       m_GamePlugin->initializeProfile(m_Directory, IPluginGame::CONFIGURATION);
-      QMessageBox::StandardButton res =
-          QMessageBox::warning(QApplication::activeModalWidget(),
-                               tr("Missing profile-specific game INI files!"),
-                               tr("Some of your profile-specific game INI files were "
-                                  "missing.  They will now be copied "
-                                  "from the vanilla game folder.  You might want to "
-                                  "double-check your settings.\n\n"
-                                  "Missing files:\n") +
-                                   missingFiles.join("\n"));
+      QMessageBox::warning(QApplication::activeModalWidget(),
+                           tr("Missing profile-specific game INI files!"),
+                           tr("Some of your profile-specific game INI files were "
+                              "missing.  They will now be copied "
+                              "from the vanilla game folder.  You might want to "
+                              "double-check your settings.\n\n"
+                              "Missing files:\n") +
+                               missingFiles.join("\n"));
     }
   }
   return enabled;

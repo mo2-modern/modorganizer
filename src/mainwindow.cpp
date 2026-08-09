@@ -1306,7 +1306,6 @@ void MainWindow::showEvent(QShowEvent* event)
 
       m_OrganizerCore.settings().setFirstStart(false);
     } else {
-      auto& settings = m_OrganizerCore.settings();
       if (m_LastVersion < QVersionNumber(2, 5) &&
           !GlobalSettings::hideCategoryReminder()) {
         QMessageBox migrateCatDialog;

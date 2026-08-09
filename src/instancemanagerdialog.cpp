@@ -412,7 +412,6 @@ void InstanceManagerDialog::rename()
 
   const auto selIndex = singleSelectionIndex();
 
-  auto& m = InstanceManager::singleton();
   if (i->isActive()) {
     QMessageBox::information(this, tr("Rename instance"),
                              tr("The active instance cannot be renamed."));
@@ -491,7 +490,6 @@ void InstanceManagerDialog::deleteInstance()
     return;
   }
 
-  auto& m = InstanceManager::singleton();
   if (i->isActive()) {
     QMessageBox::information(this, tr("Deleting instance"),
                              tr("The active instance cannot be deleted."));

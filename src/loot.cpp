@@ -564,8 +564,6 @@ void Loot::lootThread()
 
 bool Loot::waitForCompletion()
 {
-  bool terminating = false;
-
   log::debug("loot thread waiting for completion on lootcli");
 
   for (;;) {

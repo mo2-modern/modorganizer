@@ -434,8 +434,6 @@ void FileTreeTab::onContextMenu(const QPoint& pos)
     enableDelete    = true;
 
     // only enable open action if a file is selected
-    bool hasFiles = false;
-
     const QString fileName = m_fs->fileName(selection[0]);
 
     if (m_fs->fileInfo(selection[0]).isFile()) {

@@ -361,8 +361,9 @@ void NexusInterface::interpretNexusFileName(const QString& fileName, QString& mo
     int index   = 0;
     auto splits = fileName.split(QRegularExpression("[^0-9]"), Qt::KeepEmptyParts);
     for (auto substr : splits) {
-      bool ok   = false;
-      int value = substr.toInt(&ok);
+      bool ok = false;
+      // the return is unused; the call is kept for its `ok` out-parameter
+      substr.toInt(&ok);
       if (ok) {
         QString highlight(fileName);
         highlight.insert(index, " *");
@@ -892,7 +893,6 @@ void NexusInterface::nextRequest()
 
   QString url;
   if (!info.m_Reroute) {
-    bool hasParams = false;
     switch (info.m_Type) {
     case NXMRequestInfo::TYPE_DESCRIPTION:
     case NXMRequestInfo::TYPE_MODINFO: {

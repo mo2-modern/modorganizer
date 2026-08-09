@@ -378,7 +378,7 @@ ProcessRunner::Results waitForProcesses(const std::vector<HANDLE>& initialProces
     if (::AssignProcessToJobObject(job.get(), h)) {
       oneWorked = true;
     } else {
-      const auto e = GetLastError();
+      [[maybe_unused]] const auto e = GetLastError();
 
       // this happens when closing MO while multiple processes are running,
       // so the logging is disabled until it gets fixed

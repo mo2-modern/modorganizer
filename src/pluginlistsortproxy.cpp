@@ -129,7 +129,6 @@ bool PluginListSortProxy::filterMatchesPlugin(const QString& plugin) const
 {
   if (!m_CurrentFilter.isEmpty()) {
 
-    bool display       = false;
     QString filterCopy = QString(m_CurrentFilter);
     filterCopy.replace("||", ";").replace("OR", ";").replace("|", ";");
     QStringList ORList = filterCopy.split(";", Qt::SkipEmptyParts);

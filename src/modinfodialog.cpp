@@ -280,7 +280,6 @@ int ModInfoDialog::exec()
   // whether to select the first tab; if the main window requested a specific
   // tab, it is selected when encountered in update()
   const auto noCustomTabRequested = (m_initialTab == ModInfoTabIDs::None);
-  const auto requestedTab         = m_initialTab;
 
   update(true);
 

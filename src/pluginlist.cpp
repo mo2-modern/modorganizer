@@ -1369,8 +1369,6 @@ void PluginList::testMasters()
 
 QVariant PluginList::data(const QModelIndex& modelIndex, int role) const
 {
-  int index = modelIndex.row();
-
   if ((role == Qt::DisplayRole) || (role == Qt::EditRole)) {
     return displayData(modelIndex);
   } else if ((role == Qt::CheckStateRole) && (modelIndex.column() == 0)) {
@@ -1487,8 +1485,6 @@ QVariant PluginList::fontData(const QModelIndex& modelIndex) const
 
 QVariant PluginList::alignmentData(const QModelIndex& modelIndex) const
 {
-  const int index = modelIndex.row();
-
   if (modelIndex.column() == 0) {
     return QVariant(Qt::AlignLeft | Qt::AlignVCenter);
   } else {

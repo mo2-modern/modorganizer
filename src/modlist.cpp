@@ -1367,7 +1367,6 @@ QString ModList::getColumnToolTip(int column) const
   case COL_FLAGS:
     return tr("Emblems to highlight things that might require attention.");
   case COL_CONTENT: {
-    auto& contents = m_Organizer->modDataContents();
     if (m_Organizer->modDataContents().empty()) {
       return QString();
     }
