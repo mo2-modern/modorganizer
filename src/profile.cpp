@@ -710,13 +710,13 @@ bool Profile::setModPriority(unsigned int index, int& newPriority)
     return false;
   }
 
-  for (const auto& [priority, index] : m_ModIndexByPriority) {
+  for (const auto& [priority, modIndex] : m_ModIndexByPriority) {
     if (newPriority < oldPriority && priority >= newPriority &&
         priority < oldPriority) {
-      m_ModStatus.at(index).m_Priority += 1;
+      m_ModStatus.at(modIndex).m_Priority += 1;
     } else if (newPriority > oldPriority && priority <= newPriority &&
                priority > oldPriority) {
-      m_ModStatus.at(index).m_Priority -= 1;
+      m_ModStatus.at(modIndex).m_Priority -= 1;
     }
     lastPriority = std::max(lastPriority, priority);
   }

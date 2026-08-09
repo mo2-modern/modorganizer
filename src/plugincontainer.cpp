@@ -607,8 +607,8 @@ IPlugin* PluginContainer::registerPlugin(QObject* plugin, const QString& filepat
       QStringList filepaths =
           proxy->pluginList(QCoreApplication::applicationDirPath() + "/" +
                             ToQString(AppConfig::pluginPath()));
-      for (const QString& filepath : filepaths) {
-        loadProxied(filepath, proxy);
+      for (const QString& proxiedPath : filepaths) {
+        loadProxied(proxiedPath, proxy);
       }
       return proxy;
     }
@@ -832,15 +832,15 @@ std::vector<QObject*> PluginContainer::loadProxied(const QString& filepath,
     }
 
     // Fake masters:
-    for (auto& [name, proxiedPlugins] : proxiedByNames) {
-      if (proxiedPlugins.size() > 1) {
-        auto it = std::min_element(std::begin(proxiedPlugins), std::end(proxiedPlugins),
+    for (auto& [name, pluginsForName] : proxiedByNames) {
+      if (pluginsForName.size() > 1) {
+        auto it = std::min_element(std::begin(pluginsForName), std::end(pluginsForName),
                                    [&](auto const& lhs, auto const& rhs) {
                                      return isBetterInterface(as_qobject(lhs),
                                                               as_qobject(rhs));
                                    });
 
-        for (auto& proxiedPlugin : proxiedPlugins) {
+        for (auto& proxiedPlugin : pluginsForName) {
           if (proxiedPlugin != *it) {
             m_Requirements.at(proxiedPlugin).setMaster(*it);
           }

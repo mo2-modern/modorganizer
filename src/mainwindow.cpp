@@ -1782,9 +1782,9 @@ void MainWindow::on_profileBox_currentIndexChanged(int index)
     // profile in the list because 1) it's done just below, and 2) it might be
     // wrong profile if there's something in newSelection
     while (!refreshProfiles(false)) {
-      ProfilesDialog dlg(previousName, m_OrganizerCore, this);
-      dlg.exec();
-      newSelection = dlg.selectedProfile();
+      ProfilesDialog profilesDlg(previousName, m_OrganizerCore, this);
+      profilesDlg.exec();
+      newSelection = profilesDlg.selectedProfile();
     }
 
     // note that setCurrentText() is recursive, it will re-execute this function
@@ -2024,11 +2024,11 @@ void MainWindow::updateBSAList(const QStringList& defaultArchives,
       modName              = modInfo->name();
     }
 
-    QList<QTreeWidgetItem*> items =
+    QList<QTreeWidgetItem*> matches =
         ui->bsaList->findItems(modName, Qt::MatchFixedString);
     QTreeWidgetItem* subItem = nullptr;
-    if (items.length() > 0) {
-      subItem = items.at(0);
+    if (matches.length() > 0) {
+      subItem = matches.at(0);
     } else {
       subItem = new QTreeWidgetItem(QStringList(modName));
       subItem->setFlags(subItem->flags() & ~Qt::ItemIsDragEnabled);
@@ -3956,15 +3956,15 @@ void MainWindow::dragEnterEvent(QDragEnterEvent* event)
     // If I read the documentation right, this won't work under a motif windows
     // manager and the check needs to be done at the drop. However, that means
     // the user might be allowed to drop things which we can't sanely process
-    QMimeData const* data = event->mimeData();
+    QMimeData const* mimeData = event->mimeData();
 
-    if (data->hasUrls()) {
+    if (mimeData->hasUrls()) {
       QStringList extensions =
           m_OrganizerCore.installationManager()->getSupportedExtensions();
 
       // This is probably OK - scan to see if these are moderately sane archive
       // types
-      QList<QUrl> urls = data->urls();
+      QList<QUrl> urls = mimeData->urls();
       bool ok          = true;
       for (const QUrl& url : urls) {
         if (url.isLocalFile()) {

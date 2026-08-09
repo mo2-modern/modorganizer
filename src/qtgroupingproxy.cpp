@@ -111,19 +111,20 @@ QList<RowData> QtGroupingProxy::belongsTo(const QModelIndex& idx)
     if (variant.typeId() == QMetaType::QVariantList) {
       // a list of variants get's expanded to multiple rows
       QVariantList list = variant.toList();
-      for (int i = 0; i < list.length(); i++) {
+      for (int li = 0; li < list.length(); li++) {
         // take an existing row data or create a new one
-        RowData rowData = (rowDataList.count() > i) ? rowDataList.takeAt(i) : RowData();
+        RowData rowData =
+            (rowDataList.count() > li) ? rowDataList.takeAt(li) : RowData();
 
         // we only gather data for the first column
         ItemData indexData = rowData.contains(0) ? rowData.take(0) : ItemData();
-        indexData.insert(role, list.value(i));
+        indexData.insert(role, list.value(li));
         rowData.insert(0, indexData);
         // for the grouped column the data should not be gathered from the children
         // this will allow filtering on the content of this column with a
         // QSortFilterProxyModel
         rowData.insert(m_groupedColumn, indexData);
-        rowDataList.insert(i, rowData);
+        rowDataList.insert(li, rowData);
       }
       break;
     } else if (!variant.isNull()) {
@@ -787,9 +788,9 @@ bool QtGroupingProxy::dropMimeData(const QMimeData* data, Qt::DropAction action,
     if (row == -1) {
       return sourceModel()->dropMimeData(data, action, -1, -1, mapToSource(parent));
     } else {
-      QModelIndex idx = mapToSource(index(row, column, parent));
-      return sourceModel()->dropMimeData(data, action, idx.row(), idx.column(),
-                                         idx.parent());
+      QModelIndex srcIdx = mapToSource(index(row, column, parent));
+      return sourceModel()->dropMimeData(data, action, srcIdx.row(), srcIdx.column(),
+                                         srcIdx.parent());
     }
   }
 }

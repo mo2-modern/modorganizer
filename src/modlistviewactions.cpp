@@ -616,9 +616,9 @@ void ModListViewActions::displayModInformation(ModInfo::Ptr modInfo,
     origin.enable(false);
 
     if (m_core.directoryStructure()->originExists(ToWString(modInfo->name()))) {
-      FilesOrigin& origin =
+      FilesOrigin& existingOrigin =
           m_core.directoryStructure()->getOriginByName(ToWString(modInfo->name()));
-      origin.enable(false);
+      existingOrigin.enable(false);
       QString path       = modInfo->absolutePath();
       QString modDataDir = m_core.managedGame()->modDataDirectory();
       path               = modDataDir.isEmpty() ? path : path + "/" + modDataDir;
@@ -1065,11 +1065,11 @@ void ModListViewActions::restoreHiddenFiles(const QModelIndexList& indices) cons
     for (auto& idx : indices) {
 
       ModInfo::Ptr modInfo = ModInfo::getByIndex(idx.data(ModList::IndexRole).toInt());
-      const auto flags     = modInfo->getFlags();
+      const auto modFlags  = modInfo->getFlags();
 
       if (!modInfo->isRegular() ||
-          std::find(flags.begin(), flags.end(), ModInfo::FLAG_HIDDEN_FILES) ==
-              flags.end()) {
+          std::find(modFlags.begin(), modFlags.end(), ModInfo::FLAG_HIDDEN_FILES) ==
+              modFlags.end()) {
         continue;
       }
 
@@ -1092,9 +1092,9 @@ void ModListViewActions::restoreHiddenFiles(const QModelIndexList& indices) cons
         ModInfo::Ptr modInfo =
             ModInfo::getByIndex(idx.data(ModList::IndexRole).toInt());
 
-        const auto flags = modInfo->getFlags();
-        if (std::find(flags.begin(), flags.end(), ModInfo::FLAG_HIDDEN_FILES) !=
-            flags.end()) {
+        const auto modFlags = modInfo->getFlags();
+        if (std::find(modFlags.begin(), modFlags.end(), ModInfo::FLAG_HIDDEN_FILES) !=
+            modFlags.end()) {
           const QString modDir = modInfo->absolutePath();
 
           auto partialResult = restoreHiddenFilesRecursive(renamer, modDir);

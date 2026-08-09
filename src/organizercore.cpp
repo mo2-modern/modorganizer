@@ -1743,12 +1743,12 @@ void OrganizerCore::modStatusChanged(unsigned int index)
     }
 
     for (unsigned int i = 0; i < m_CurrentProfile->numMods(); ++i) {
-      ModInfo::Ptr modInfo = ModInfo::getByIndex(i);
-      int priority         = m_CurrentProfile->getModPriority(i);
-      if (m_DirectoryStructure->originExists(ToWString(modInfo->name()))) {
+      ModInfo::Ptr mod = ModInfo::getByIndex(i);
+      int priority     = m_CurrentProfile->getModPriority(i);
+      if (m_DirectoryStructure->originExists(ToWString(mod->name()))) {
         // priorities in the directory structure are one higher because data is
         // 0
-        m_DirectoryStructure->getOriginByName(ToWString(modInfo->name()))
+        m_DirectoryStructure->getOriginByName(ToWString(mod->name()))
             .setPriority(priority + 1);
       }
     }
@@ -1795,12 +1795,12 @@ void OrganizerCore::modStatusChanged(QList<unsigned int> index)
     }
 
     for (unsigned int i = 0; i < m_CurrentProfile->numMods(); ++i) {
-      ModInfo::Ptr modInfo = ModInfo::getByIndex(i);
-      int priority         = m_CurrentProfile->getModPriority(i);
-      if (m_DirectoryStructure->originExists(ToWString(modInfo->name()))) {
+      ModInfo::Ptr mod = ModInfo::getByIndex(i);
+      int priority     = m_CurrentProfile->getModPriority(i);
+      if (m_DirectoryStructure->originExists(ToWString(mod->name()))) {
         // priorities in the directory structure are one higher because data is
         // 0
-        m_DirectoryStructure->getOriginByName(ToWString(modInfo->name()))
+        m_DirectoryStructure->getOriginByName(ToWString(mod->name()))
             .setPriority(priority + 1);
       }
     }

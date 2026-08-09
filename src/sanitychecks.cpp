@@ -237,16 +237,16 @@ int checkBadOSDs(const env::Module& m)
   const QFileInfo file(m.path());
   int n = 0;
 
-  for (auto&& p : list) {
-    std::smatch m;
+  for (auto&& entry : list) {
+    std::smatch match;
     const auto filename = file.fileName().toStdString();
 
-    if (std::regex_match(filename, m, p.first)) {
+    if (std::regex_match(filename, match, entry.first)) {
       log::warn("{}", QObject::tr(
                           "%1 is loaded.\nThis program is known to cause issues with "
                           "Mod Organizer, such as freezing or blank windows. Consider "
                           "uninstalling it.")
-                          .arg(QString::fromStdString(p.second)));
+                          .arg(QString::fromStdString(entry.second)));
 
       log::warn("{}", file.absoluteFilePath());
       ++n;

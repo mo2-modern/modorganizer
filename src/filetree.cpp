@@ -567,9 +567,9 @@ bool FileTree::showShellMenu(QPoint pos)
       }
 
       for (auto&& alt : alts) {
-        auto itor = menus.find(alt.originID());
-        if (itor == menus.end()) {
-          itor = menus.emplace(alt.originID(), mw).first;
+        auto menuItor = menus.find(alt.originID());
+        if (menuItor == menus.end()) {
+          menuItor = menus.emplace(alt.originID(), mw).first;
         }
 
         const auto fullPath = file->getFullPath(alt.originID());
@@ -585,7 +585,7 @@ bool FileTree::showShellMenu(QPoint pos)
                                .arg(QString::fromStdWString(fullPath)));
         }
 
-        itor->second.addFile(QFileInfo(QString::fromStdWString(fullPath)));
+        menuItor->second.addFile(QFileInfo(QString::fromStdWString(fullPath)));
       }
     }
   }

@@ -170,10 +170,10 @@ private:
     if (m_mainUI) {
       const auto topLevels = QApplication::topLevelWidgets();
 
-      for (auto* w : topLevels) {
-        if (w && w->parentWidget() == m_mainUI) {
-          if (isValidTarget(w)) {
-            return w;
+      for (auto* tl : topLevels) {
+        if (tl && tl->parentWidget() == m_mainUI) {
+          if (isValidTarget(tl)) {
+            return tl;
           }
         }
       }

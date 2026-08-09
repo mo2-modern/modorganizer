@@ -93,12 +93,12 @@ public:
         QString temp = input.mid(0, length);
         tagIter->second.first.setPatternOptions(
             QRegularExpression::PatternOption::DotMatchesEverythingOption);
-        auto match = tagIter->second.first.match(temp);
-        if (match.hasMatch()) {
+        auto tagMatch = tagIter->second.first.match(temp);
+        if (tagMatch.hasMatch()) {
           if (tagIter->second.second.isEmpty()) {
             if (tagName == "color") {
-              QString color   = match.captured(1);
-              QString content = match.captured(2);
+              QString color   = tagMatch.captured(1);
+              QString content = tagMatch.captured(2);
               if (color.at(0) == '#') {
                 return temp.replace(tagIter->second.first,
                                     QString("<font style=\"color: %1;\">%2</font>")

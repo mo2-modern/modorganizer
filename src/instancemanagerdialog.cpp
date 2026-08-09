@@ -552,9 +552,9 @@ void InstanceManagerDialog::deleteInstance()
   // gathering all the selected items
   QStringList selected;
 
-  for (int i = 0; i < list->count(); ++i) {
-    if (list->item(i)->checkState() == Qt::Checked) {
-      selected.append(list->item(i)->text());
+  for (int row = 0; row < list->count(); ++row) {
+    if (list->item(row)->checkState() == Qt::Checked) {
+      selected.append(list->item(row)->text());
     }
   }
 

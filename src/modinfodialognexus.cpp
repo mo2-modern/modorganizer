@@ -101,8 +101,8 @@ void NexusTab::update()
     ui->sourceGame->setDisabled(true);
   } else {
     for (auto game : plugin().plugins<MOBase::IPluginGame>()) {
-      for (QString gameName : core().managedGame()->validShortNames()) {
-        if (game->gameShortName().compare(gameName, Qt::CaseInsensitive) == 0) {
+      for (QString shortName : core().managedGame()->validShortNames()) {
+        if (game->gameShortName().compare(shortName, Qt::CaseInsensitive) == 0) {
           ui->sourceGame->addItem(game->gameName(), game->gameShortName());
           break;
         }

@@ -266,8 +266,8 @@ bool ModListByPriorityProxy::canDropMimeData(const QMimeData* data,
         return !parentItem->mod->isSeparator();
       }
 
-      for (auto row : dropInfo.rows()) {
-        auto it = m_IndexToItem.find(row);
+      for (auto dropRow : dropInfo.rows()) {
+        auto it = m_IndexToItem.find(dropRow);
         if (it != m_IndexToItem.end() && it->second->parent == parentItem) {
           return false;
         }
