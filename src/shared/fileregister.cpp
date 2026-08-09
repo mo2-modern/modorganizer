@@ -26,7 +26,7 @@ bool FileRegister::indexValid(FileIndex index) const
 }
 
 FileEntryPtr FileRegister::createFile(std::wstring name, DirectoryEntry* parent,
-                                      DirectoryStats& stats)
+                                      DirectoryStats&)
 {
   const auto index = generateIndex();
   auto p           = FileEntryPtr(new FileEntry(index, std::move(name), parent));

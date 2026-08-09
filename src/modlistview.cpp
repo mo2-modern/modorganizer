@@ -767,16 +767,15 @@ void ModListView::setup(OrganizerCore& core, CategoryFactory& factory, MainWindo
 
   // update the proxy when changing the sort column/direction and the group
   connect(m_sortProxy, &QAbstractItemModel::layoutAboutToBeChanged,
-          [this](auto&& parents, auto&& hint) {
+          [this](auto&&, auto&& hint) {
             if (hint == QAbstractItemModel::VerticalSortHint) {
               updateGroupByProxy();
             }
           });
-  connect(ui.groupBy, QOverload<int>::of(&QComboBox::currentIndexChanged),
-          [=](int index) {
-            updateGroupByProxy();
-            onModFilterActive(m_sortProxy->isFilterActive());
-          });
+  connect(ui.groupBy, QOverload<int>::of(&QComboBox::currentIndexChanged), [=](int) {
+    updateGroupByProxy();
+    onModFilterActive(m_sortProxy->isFilterActive());
+  });
   sortByColumn(ModList::COL_PRIORITY, Qt::AscendingOrder);
 
   // inform the mod list about the type of item being dropped at the beginning of a drag
@@ -792,7 +791,7 @@ void ModListView::setup(OrganizerCore& core, CategoryFactory& factory, MainWindo
     verticalScrollBar()->repaint();
   });
   connect(header(), &QHeaderView::sectionResized,
-          [=](int logicalIndex, int oldSize, int newSize) {
+          [=](int logicalIndex, int, int newSize) {
             m_sortProxy->setColumnVisible(logicalIndex, newSize != 0);
           });
 

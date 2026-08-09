@@ -408,7 +408,7 @@ void ModListContextMenu::addSeparatorActions(ModInfo::Ptr mod)
   addSeparator();
 }
 
-void ModListContextMenu::addForeignActions(ModInfo::Ptr mod)
+void ModListContextMenu::addForeignActions(ModInfo::Ptr)
 {
   if (m_view->sortColumn() == ModList::COL_PRIORITY) {
     addSendToContextMenu();

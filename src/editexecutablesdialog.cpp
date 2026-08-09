@@ -347,7 +347,7 @@ void EditExecutablesDialog::updateUI(const QListWidgetItem* item, const Executab
   setButtons(item, e);
 }
 
-void EditExecutablesDialog::setButtons(const QListWidgetItem* item, const Executable* e)
+void EditExecutablesDialog::setButtons(const QListWidgetItem* item, const Executable*)
 {
   // add and remove are always enabled
 
@@ -729,7 +729,7 @@ void EditExecutablesDialog::on_createFilesInMod_toggled(bool checked)
   }
 }
 
-void EditExecutablesDialog::on_forceLoadLibraries_toggled(bool checked)
+void EditExecutablesDialog::on_forceLoadLibraries_toggled(bool)
 {
   if (m_settingUI) {
     return;

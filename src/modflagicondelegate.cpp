@@ -11,7 +11,7 @@ ModFlagIconDelegate::ModFlagIconDelegate(ModListView* view, int column, int comp
 {}
 
 QList<QString> ModFlagIconDelegate::getIconsForFlags(std::vector<ModInfo::EFlag> flags,
-                                                     bool compact)
+                                                     bool)
 {
   QList<QString> result;
 

@@ -46,7 +46,7 @@ void throttledWarning(const APIUserAccount& user)
              APIUserAccount::ThrottleThreshold, user.remainingRequests());
 }
 
-NexusBridge::NexusBridge(PluginContainer* pluginContainer, const QString& subModule)
+NexusBridge::NexusBridge(PluginContainer*, const QString& subModule)
     : m_Interface(&NexusInterface::instance()), m_SubModule(subModule)
 {}
 

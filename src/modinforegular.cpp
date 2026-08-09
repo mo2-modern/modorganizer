@@ -405,8 +405,8 @@ void ModInfoRegular::nxmTrackingToggled(QString, int, QVariant, bool tracked)
   emit modDetailsUpdated(true);
 }
 
-void ModInfoRegular::nxmRequestFailed(QString, int, int, QVariant userData,
-                                      int errorCode, const QString& errorMessage)
+void ModInfoRegular::nxmRequestFailed(QString, int, int, QVariant userData, int,
+                                      const QString& errorMessage)
 {
   QString fullMessage = errorMessage;
   if (userData.canConvert<int>() && (userData.toInt() == 1)) {

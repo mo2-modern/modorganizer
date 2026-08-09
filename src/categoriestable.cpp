@@ -21,7 +21,7 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 
 CategoriesTable::CategoriesTable(QWidget* parent) : QTableWidget(parent) {}
 
-bool CategoriesTable::dropMimeData(int row, int column, const QMimeData* data,
+bool CategoriesTable::dropMimeData(int row, int, const QMimeData* data,
                                    Qt::DropAction action)
 {
   if (row == -1)

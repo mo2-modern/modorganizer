@@ -77,7 +77,7 @@ QString ModInfoOverwrite::getDescription() const
             "modified (i.e. by the construction kit)");
 }
 
-QStringList ModInfoOverwrite::archives(bool checkOnDisk)
+QStringList ModInfoOverwrite::archives(bool)
 {
   QStringList result;
   QDir dir(this->absolutePath());

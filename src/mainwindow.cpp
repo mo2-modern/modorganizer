@@ -3074,7 +3074,7 @@ void MainWindow::updateSortButton()
   }
 }
 
-void MainWindow::nxmEndorsementsAvailable(QVariant userData, QVariant resultData, int)
+void MainWindow::nxmEndorsementsAvailable(QVariant, QVariant resultData, int)
 {
   QVariantList data = resultData.toList();
   std::multimap<QString, std::pair<int, QString>> sorted;
@@ -3307,8 +3307,8 @@ static QString pickNewestVersion(int installedFileId, bool fileIsActive,
   return filesById.value(*versionSourceId)["version"].toString();
 }
 
-void MainWindow::nxmUpdatesAvailable(QString gameName, int modID, QVariant userData,
-                                     QVariant resultData, int requestID)
+void MainWindow::nxmUpdatesAvailable(QString gameName, int modID, QVariant,
+                                     QVariant resultData, int)
 {
   QVariantMap resultInfo = resultData.toMap();
   QList files            = resultInfo["files"].toList();
@@ -3382,8 +3382,8 @@ void MainWindow::nxmUpdatesAvailable(QString gameName, int modID, QVariant userD
   }
 }
 
-void MainWindow::nxmModInfoAvailable(QString gameName, int modID, QVariant userData,
-                                     QVariant resultData, int requestID)
+void MainWindow::nxmModInfoAvailable(QString gameName, int modID, QVariant,
+                                     QVariant resultData, int)
 {
   QVariantMap result = resultData.toMap();
   QString gameNameReal;
@@ -3494,7 +3494,7 @@ void MainWindow::nxmEndorsementToggled(QString, int, QVariant, QVariant resultDa
   }
 }
 
-void MainWindow::nxmTrackedModsAvailable(QVariant userData, QVariant resultData, int)
+void MainWindow::nxmTrackedModsAvailable(QVariant, QVariant resultData, int)
 {
   QMap<QString, QString> gameNames;
   for (auto game : m_PluginContainer.plugins<IPluginGame>()) {
@@ -3558,8 +3558,7 @@ void MainWindow::nxmDownloadURLs(QString, int, int, QVariant, QVariant resultDat
   m_OrganizerCore.settings().network().updateServers(servers);
 }
 
-void MainWindow::nxmGameInfoAvailable(QString gameName, QVariant, QVariant resultData,
-                                      int)
+void MainWindow::nxmGameInfoAvailable(QString, QVariant, QVariant resultData, int)
 {
   QVariantMap result          = resultData.toMap();
   QVariantList categories     = result["categories"].toList();

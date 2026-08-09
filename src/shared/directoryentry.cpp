@@ -658,7 +658,7 @@ void DirectoryEntry::onDirectoryStart(Context* cx, std::wstring_view path)
   });
 }
 
-void DirectoryEntry::onDirectoryEnd(Context* cx, std::wstring_view path)
+void DirectoryEntry::onDirectoryEnd(Context* cx, std::wstring_view)
 {
   elapsed(cx->stats.dirTimes, [&] {
     cx->current.pop();

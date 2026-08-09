@@ -249,7 +249,7 @@ void FilterList::saveState(Settings& s) const
   s.widgets().saveIndex(ui->filtersSeparators);
 }
 
-QTreeWidgetItem* FilterList::addCriteriaItem(QTreeWidgetItem* root, const QString& name,
+QTreeWidgetItem* FilterList::addCriteriaItem(QTreeWidgetItem*, const QString& name,
                                              int categoryID, CriteriaType type)
 {
   auto* item = new CriteriaItem(this, name, type, categoryID);

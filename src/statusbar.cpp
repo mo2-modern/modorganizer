@@ -212,7 +212,7 @@ void StatusBarAction::set(bool visible)
   setVisible(visible);
 }
 
-void StatusBarAction::mouseDoubleClickEvent(QMouseEvent* e)
+void StatusBarAction::mouseDoubleClickEvent(QMouseEvent*)
 {
   if (m_action->isEnabled()) {
     m_action->trigger();

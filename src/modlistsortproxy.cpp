@@ -309,7 +309,7 @@ bool ModListSortProxy::filterMatchesModOr(ModInfo::Ptr info, bool enabled) const
   return true;
 }
 
-bool ModListSortProxy::optionsMatchMod(ModInfo::Ptr info, bool) const
+bool ModListSortProxy::optionsMatchMod(ModInfo::Ptr, bool) const
 {
   return true;
 }
@@ -420,8 +420,7 @@ bool ModListSortProxy::categoryMatchesMod(ModInfo::Ptr info, bool enabled,
   return b;
 }
 
-bool ModListSortProxy::contentMatchesMod(ModInfo::Ptr info, bool enabled,
-                                         int content) const
+bool ModListSortProxy::contentMatchesMod(ModInfo::Ptr info, bool, int content) const
 {
   return info->hasContent(content);
 }

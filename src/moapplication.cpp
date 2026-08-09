@@ -310,7 +310,7 @@ int MOApplication::setup(MOMultiProcess& multiProcess, bool forceSelect)
   return 0;
 }
 
-int MOApplication::run(MOMultiProcess& multiProcess)
+int MOApplication::run(MOMultiProcess&)
 {
   // checking command line
   TimeThis tt("MOApplication::run()");

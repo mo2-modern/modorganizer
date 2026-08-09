@@ -440,7 +440,7 @@ void Settings::registerAsMODLHandler(bool force, bool includeNxm)
   QProcess* modlNxmProcess = new QProcess(this);
 
   connect(modlNxmProcess, &QProcess::finished,
-          [=](int exitCode, QProcess::ExitStatus exitStatus) {
+          [=](int, QProcess::ExitStatus exitStatus) {
             if (exitStatus == QProcess::NormalExit) {
               if (includeNxm) {
                 nexus().registerAsNXMHandler(force);

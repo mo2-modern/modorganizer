@@ -549,7 +549,7 @@ std::optional<int> Command::runEarly()
   return {};
 }
 
-std::optional<int> Command::runPostApplication(MOApplication& a)
+std::optional<int> Command::runPostApplication(MOApplication&)
 {
   return {};
 }

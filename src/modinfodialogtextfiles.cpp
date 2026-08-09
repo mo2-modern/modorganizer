@@ -201,7 +201,7 @@ TextFilesTab::TextFilesTab(ModInfoDialogTabContext cx)
                       cx.ui->textFileEditor, cx.ui->textFileFilter)
 {}
 
-bool TextFilesTab::wantsFile(const QString& rootPath, const QString& fullPath) const
+bool TextFilesTab::wantsFile(const QString&, const QString& fullPath) const
 {
   static const QString extensions[] = {".txt", ".json", ".cfg", ".log", ".toml"};
 
@@ -219,7 +219,7 @@ IniFilesTab::IniFilesTab(ModInfoDialogTabContext cx)
                       cx.ui->iniFileEditor, cx.ui->iniFileFilter)
 {}
 
-bool IniFilesTab::wantsFile(const QString& rootPath, const QString& fullPath) const
+bool IniFilesTab::wantsFile(const QString&, const QString& fullPath) const
 {
   static const QString extensions[] = {".ini"};
   static const QString meta("meta.ini");

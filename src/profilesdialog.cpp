@@ -386,7 +386,7 @@ void ProfilesDialog::on_profilesList_currentItemChanged(QListWidgetItem* current
   }
 }
 
-void ProfilesDialog::on_profilesList_itemActivated(QListWidgetItem* item)
+void ProfilesDialog::on_profilesList_itemActivated(QListWidgetItem*)
 {
   on_select_clicked();
 }

@@ -50,7 +50,7 @@ public:
   }
 
 protected:
-  QList<QString> getIcons(const QModelIndex& index) const override
+  QList<QString> getIcons(const QModelIndex&) const override
   {
     const auto flags = {ModInfo::FLAG_BACKUP, ModInfo::FLAG_NOTENDORSED,
                         ModInfo::FLAG_NOTES, ModInfo::FLAG_ALTERNATE_GAME};
@@ -82,7 +82,7 @@ public:
   }
 
 protected:
-  QList<QString> getIcons(const QModelIndex& index) const override
+  QList<QString> getIcons(const QModelIndex&) const override
   {
     const auto flags = {ModInfo::FLAG_CONFLICT_MIXED,
                         ModInfo::FLAG_ARCHIVE_LOOSE_CONFLICT_OVERWRITE,

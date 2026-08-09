@@ -383,7 +383,7 @@ Directory getFilesAndDirs(const std::wstring& path)
         cx->current.push(&cx->current.top()->dirs.back());
       },
 
-      [](void* pcx, std::wstring_view path) {
+      [](void* pcx, std::wstring_view) {
         Context* cx = (Context*)pcx;
         cx->current.pop();
       },

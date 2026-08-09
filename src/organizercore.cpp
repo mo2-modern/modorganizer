@@ -1125,7 +1125,10 @@ bool OrganizerCore::previewFileWithAlternatives(QWidget* parent, QString fileNam
           } else {
             preview.addVariant(ToQString(origin.getName()), wid);
           }
-        } catch (std::exception& e) {
+        } catch (const std::exception& e) {
+          // the preview is optional, so a failure here is not reported to the
+          // user, but swallowing it entirely makes it undiagnosable
+          log::debug("failed to generate preview for {}: {}", filePath, e.what());
         }
       }
     }

@@ -152,8 +152,7 @@ QString ModList::getFlagText(ModInfo::EFlag flag, ModInfo::Ptr modInfo) const
   }
 }
 
-QString ModList::getConflictFlagText(ModInfo::EConflictFlag flag,
-                                     ModInfo::Ptr modInfo) const
+QString ModList::getConflictFlagText(ModInfo::EConflictFlag flag, ModInfo::Ptr) const
 {
   switch (flag) {
   case ModInfo::FLAG_CONFLICT_OVERWRITE:

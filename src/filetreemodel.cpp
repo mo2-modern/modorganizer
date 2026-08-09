@@ -430,7 +430,7 @@ QVariant FileTreeModel::data(const QModelIndex& index, int role) const
   return {};
 }
 
-QVariant FileTreeModel::headerData(int i, Qt::Orientation ori, int role) const
+QVariant FileTreeModel::headerData(int i, Qt::Orientation, int role) const
 {
   static const std::array<QString, ColumnCount> names = {
       tr("Name"), tr("Mod"), tr("Type"), tr("Size"), tr("Date modified")};

@@ -114,8 +114,7 @@ void ModListByPriorityProxy::buildTree()
   }
 }
 
-void ModListByPriorityProxy::onModelRowsRemoved(const QModelIndex& parent, int first,
-                                                int last)
+void ModListByPriorityProxy::onModelRowsRemoved(const QModelIndex&, int, int)
 {
   onModelReset();
 }
@@ -149,7 +148,7 @@ void ModListByPriorityProxy::onModelReset()
 
 void ModListByPriorityProxy::onModelDataChanged(const QModelIndex& topLeft,
                                                 const QModelIndex& bottomRight,
-                                                const QVector<int>& roles)
+                                                const QVector<int>&)
 {
   QModelIndex proxyTopLeft = mapFromSource(topLeft);
   if (!proxyTopLeft.isValid()) {

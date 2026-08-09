@@ -571,8 +571,8 @@ bool DownloadManager::addDownload(QNetworkReply* reply,
 }
 
 bool DownloadManager::addDownload(QNetworkReply* reply, const QStringList& URLs,
-                                  const QString& fileName, QString gameName, int modID,
-                                  int fileID, const ModRepositoryFileInfo* fileInfo,
+                                  const QString& fileName, QString, int, int,
+                                  const ModRepositoryFileInfo* fileInfo,
                                   std::optional<DownloadID> reservedID)
 {
   // download invoked from an already open network reply (i.e. download link in the

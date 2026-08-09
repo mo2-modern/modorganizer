@@ -360,8 +360,7 @@ void CategoriesDialog::nexusImport_clicked()
   }
 }
 
-void CategoriesDialog::nxmGameInfoAvailable(QString gameName, QVariant,
-                                            QVariant resultData, int)
+void CategoriesDialog::nxmGameInfoAvailable(QString, QVariant, QVariant resultData, int)
 {
   QVariantMap result          = resultData.toMap();
   QVariantList categories     = result["categories"].toList();

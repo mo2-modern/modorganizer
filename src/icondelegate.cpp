@@ -42,7 +42,7 @@ IconDelegate::IconDelegate(QTreeView* view, int column, int compactSize)
 }
 
 void IconDelegate::paintIcons(QPainter* painter, const QStyleOptionViewItem& option,
-                              const QModelIndex& index, const QList<QString>& icons)
+                              const QModelIndex&, const QList<QString>& icons)
 {
   int iconWidth = !icons.isEmpty() ? ((option.rect.width() / icons.size()) - 4) : 16;
 

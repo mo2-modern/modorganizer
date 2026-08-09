@@ -115,7 +115,7 @@ QMenu* PluginListContextMenu::createSendToContextMenu()
   return menu;
 }
 
-void PluginListContextMenu::sendPluginsToPriority(const QModelIndexList& indices)
+void PluginListContextMenu::sendPluginsToPriority(const QModelIndexList&)
 {
   bool ok;
   int newPriority = QInputDialog::getInt(m_view->topLevelWidget(), tr("Set Priority"),

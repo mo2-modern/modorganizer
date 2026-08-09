@@ -1814,7 +1814,7 @@ bool PluginList::isProblematic(const ESPInfo& esp, const AdditionalInfo* info) c
   return false;
 }
 
-bool PluginList::hasInfo(const ESPInfo& esp, const AdditionalInfo* info) const
+bool PluginList::hasInfo(const ESPInfo&, const AdditionalInfo* info) const
 {
   if (info) {
     if (!info->messages.empty()) {
@@ -1931,7 +1931,7 @@ Qt::ItemFlags PluginList::flags(const QModelIndex& modelIndex) const
   return result;
 }
 
-void PluginList::setPluginPriority(int row, int& newPriority, bool isForced)
+void PluginList::setPluginPriority(int row, int& newPriority, bool)
 {
   int newPriorityTemp = newPriority;
 

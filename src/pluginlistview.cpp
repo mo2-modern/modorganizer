@@ -230,7 +230,7 @@ void PluginListView::setSelected(const QModelIndex& current,
   }
 }
 
-void PluginListView::setup(OrganizerCore& core, MainWindow* mw, Ui::MainWindow* mwui)
+void PluginListView::setup(OrganizerCore& core, MainWindow*, Ui::MainWindow* mwui)
 {
   m_core       = &core;
   ui           = {mwui->activePluginsCounter, mwui->espFilterEdit};

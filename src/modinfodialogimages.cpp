@@ -109,7 +109,7 @@ void ImagesTab::clear()
   setHasData(false);
 }
 
-bool ImagesTab::feedFile(const QString& rootPath, const QString& fullPath)
+bool ImagesTab::feedFile(const QString&, const QString& fullPath)
 {
   for (const auto& ext : m_supportedFormats) {
     if (fullPath.endsWith(ext, Qt::CaseInsensitive)) {
@@ -396,7 +396,7 @@ Geometry ImagesTab::makeGeometry() const
   return Geometry(ui->imagesThumbnails->size(), m_metrics);
 }
 
-void ImagesTab::paintThumbnailsArea(QPaintEvent* e)
+void ImagesTab::paintThumbnailsArea(QPaintEvent*)
 {
   PaintContext cx(ui->imagesThumbnails, makeGeometry());
 
@@ -740,7 +740,7 @@ void ScalableImage::setColors(const QColor& border, const QColor& background)
   m_backgroundColor = background;
 }
 
-void ScalableImage::paintEvent(QPaintEvent* e)
+void ScalableImage::paintEvent(QPaintEvent*)
 {
   if (m_original.isNull()) {
     if (m_path.isNull()) {
