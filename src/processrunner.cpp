@@ -444,7 +444,7 @@ ProcessRunner::Results waitForProcess(HANDLE initialProcess, LPDWORD exitCode,
 
 ProcessRunner::ProcessRunner(OrganizerCore& core, IUserInterface* ui)
     : m_core(core), m_ui(ui), m_lockReason(UILocker::NoReason), m_waitFlags(NoFlags),
-      m_handle(INVALID_HANDLE_VALUE), m_exitCode(-1)
+      m_handle(INVALID_HANDLE_VALUE), m_exitCode(static_cast<DWORD>(-1))
 {
   // all processes started in ProcessRunner are hooked by default
   setHooked(true);

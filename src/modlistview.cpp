@@ -993,7 +993,8 @@ void ModListView::onDoubleClicked(const QModelIndex& index)
   bool indexOk = false;
   int modIndex = index.data(ModList::IndexRole).toInt(&indexOk);
 
-  if (!indexOk || modIndex < 0 || modIndex >= ModInfo::getNumMods()) {
+  if (!indexOk || modIndex < 0 ||
+      static_cast<unsigned int>(modIndex) >= ModInfo::getNumMods()) {
     return;
   }
 

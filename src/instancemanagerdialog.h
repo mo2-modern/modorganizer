@@ -87,7 +87,7 @@ protected:
   void showEvent(QShowEvent* e) override;
 
 private:
-  static const std::size_t NoSelection = -1;
+  static const std::size_t NoSelection = static_cast<std::size_t>(-1);
 
   std::unique_ptr<Ui::InstanceManagerDialog> ui;
   PluginContainer& m_pc;

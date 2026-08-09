@@ -239,7 +239,7 @@ bool ModListByPriorityProxy::canDropMimeData(const QMimeData* data,
 
   if (dropInfo.isModDrop()) {
     bool hasSeparator          = false;
-    unsigned int firstRowIndex = -1;
+    unsigned int firstRowIndex = static_cast<unsigned int>(-1);
 
     int firstRowPriority = Profile::MaximumPriority;
     for (auto sourceRow : dropInfo.rows()) {

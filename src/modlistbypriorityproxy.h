@@ -92,10 +92,11 @@ private:
           return i;
         }
       }
-      return -1;
+      // sentinel for "not a child of this item"
+      return static_cast<std::size_t>(-1);
     }
 
-    TreeItem() : TreeItem(nullptr, -1) {}
+    TreeItem() : TreeItem(nullptr, static_cast<unsigned int>(-1)) {}
     TreeItem(ModInfo::Ptr mod, unsigned int index, TreeItem* parent = nullptr)
         : mod(mod), index(index), parent(parent)
     {}

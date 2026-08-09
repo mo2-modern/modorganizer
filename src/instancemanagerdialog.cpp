@@ -286,7 +286,7 @@ void InstanceManagerDialog::updateList()
   // there's no selection when opening the dialog, that's handled in the ctor
   if (prevSel) {
     if (m_instances.empty()) {
-      select(-1);
+      select(NoSelection);
     } else {
       if (sel == NoSelection) {
         if (prevSelIndex >= m_instances.size()) {
