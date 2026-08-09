@@ -16,7 +16,7 @@ public:
   virtual bool updateNXMInfo() override { return false; }
   virtual bool isValid() const override { return true; }
   // TODO: Fix renaming method to avoid priority reset
-  virtual bool setName(const QString& name);
+  virtual bool setName(const QString& name) override;
 
   virtual int nexusId() const override { return -1; }
   virtual void setGameName(const QString&) override {}
