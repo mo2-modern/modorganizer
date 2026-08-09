@@ -704,7 +704,14 @@ void PluginList::readLockedOrderFrom(const QString& fileName)
     return;
   }
 
-  file.open(QIODevice::ReadOnly | QIODevice::Text);
+  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    // the file exists but cannot be read; without this the locked load order
+    // would silently come back empty
+    log::error("failed to open locked load order '{}': {}", fileName,
+               file.errorString());
+    return;
+  }
+
   const QByteArray contents = file.readAll();
   file.close();
   int lineNumber = 0;

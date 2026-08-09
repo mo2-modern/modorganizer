@@ -378,7 +378,11 @@ void Profile::renameModInList(QFile& modList, const QString& oldName,
   }
 
   if (renamed) {
-    modList.open(QIODevice::WriteOnly);
+    if (!modList.open(QIODevice::WriteOnly)) {
+      log::error("failed to open mod list '{}' for writing: {}", modList.fileName(),
+                 modList.errorString());
+      return;
+    }
     modList.write(outBuffer.buffer());
     modList.close();
   }

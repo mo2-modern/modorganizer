@@ -1133,7 +1133,10 @@ void PluginContainer::loadPlugins()
       }
     }
 
-    loadCheck.open(QIODevice::WriteOnly);
+    if (!loadCheck.open(QIODevice::WriteOnly)) {
+      log::error("failed to reopen loadcheck '{}': {}", loadCheck.fileName(),
+                 loadCheck.errorString());
+    }
   }
 
   QString pluginPath =
@@ -1182,10 +1185,15 @@ void PluginContainer::loadPlugins()
     }
 
     log::warn("user skipped plugin '{}', remembering in loadcheck", skipPlugin);
-    loadCheck.open(QIODevice::WriteOnly);
-    loadCheck.write(skipPlugin.toUtf8());
-    loadCheck.write("\n");
-    loadCheck.flush();
+    if (loadCheck.open(QIODevice::WriteOnly)) {
+      loadCheck.write(skipPlugin.toUtf8());
+      loadCheck.write("\n");
+      loadCheck.flush();
+    } else {
+      log::error("failed to write loadcheck '{}': {}, the skipped plugin will not "
+                 "be remembered",
+                 loadCheck.fileName(), loadCheck.errorString());
+    }
   }
 
   bf::at_key<IPluginDiagnose>(m_Plugins).push_back(this);

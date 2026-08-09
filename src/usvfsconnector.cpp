@@ -58,8 +58,12 @@ LogWorker::LogWorker()
           QString("/logs/usvfs-%1.log")
               .arg(QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd_hh-mm-ss")))
 {
-  m_LogFile.open(QIODevice::WriteOnly);
-  log::debug("usvfs log messages are written to {}", m_LogFile.fileName());
+  if (m_LogFile.open(QIODevice::WriteOnly)) {
+    log::debug("usvfs log messages are written to {}", m_LogFile.fileName());
+  } else {
+    log::error("failed to open usvfs log '{}': {}", m_LogFile.fileName(),
+               m_LogFile.errorString());
+  }
 }
 
 LogWorker::~LogWorker() {}

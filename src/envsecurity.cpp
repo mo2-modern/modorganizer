@@ -357,7 +357,12 @@ std::optional<SecurityProduct> getWindowsFirewall()
     policy.reset(static_cast<INetFwPolicy2*>(rawPolicy));
   }
 
-  VARIANT_BOOL enabledVariant;
+  // the `if (policy)` below is defensive -- policy cannot actually be null here,
+  // since the block above either returns or resets it to a non-null pointer --
+  // but the compiler cannot prove that, and if the early return ever changed
+  // this would be read uninitialized. default to "not enabled" so the defensive
+  // branch has a sane answer instead of stack garbage
+  VARIANT_BOOL enabledVariant = VARIANT_FALSE;
 
   if (policy) {
     hr = policy->get_FirewallEnabled(NET_FW_PROFILE2_PUBLIC, &enabledVariant);
