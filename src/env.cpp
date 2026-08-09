@@ -1096,7 +1096,12 @@ HandlePtr tempFile(const std::wstring dir)
 
   // UTC time and date will be in the filename
   const auto now = std::time(0);
-  const auto tm  = std::gmtime(&now);
+
+  // std::gmtime hands back a pointer into a shared static buffer, which is why
+  // MSVC deprecates it; gmtime_s fills a caller-owned struct instead
+  std::tm tmBuf{};
+  ::gmtime_s(&tmBuf, &now);
+  const auto tm = &tmBuf;
 
   // "ModOrganizer-YYYYMMDDThhmmss.dmp", with a possible "-i" appended, where
   // i can go until MaxTries

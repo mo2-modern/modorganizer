@@ -2,6 +2,8 @@
 
 #include <report.h>
 
+#include <memory>
+
 #include "modlist.h"
 #include "modlistview.h"
 #include "modlistviewactions.h"
@@ -149,7 +151,7 @@ bool ModListChangeCategoryMenu::populate(QMenu* menu, CategoryFactory* factory,
       }
 
       int id = factory->getCategoryID(i);
-      QScopedPointer<QCheckBox> checkBox(new QCheckBox(targetMenu));
+      std::unique_ptr<QCheckBox> checkBox(new QCheckBox(targetMenu));
       bool enabled = categories.find(id) != categories.end();
       checkBox->setText(factory->getCategoryName(i).replace('&', "&&"));
       if (enabled) {
@@ -157,10 +159,10 @@ bool ModListChangeCategoryMenu::populate(QMenu* menu, CategoryFactory* factory,
       }
       checkBox->setChecked(enabled ? Qt::Checked : Qt::Unchecked);
 
-      QScopedPointer<QWidgetAction> checkableAction(new QWidgetAction(targetMenu));
-      checkableAction->setDefaultWidget(checkBox.take());
+      std::unique_ptr<QWidgetAction> checkableAction(new QWidgetAction(targetMenu));
+      checkableAction->setDefaultWidget(checkBox.release());
       checkableAction->setData(id);
-      targetMenu->addAction(checkableAction.take());
+      targetMenu->addAction(checkableAction.release());
 
       if (factory->hasChildren(i)) {
         if (populate(targetMenu, factory, mod, factory->getCategoryID(i)) || enabled) {

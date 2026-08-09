@@ -67,7 +67,8 @@ void ModListSortProxy::setCriteria(const std::vector<Criteria>& criteria)
   if (changed || isForUpdates) {
     m_Criteria = criteria;
     updateFilterActive();
-    invalidateFilter();
+    beginFilterChange();
+    endFilterChange();
     emit filterInvalidated();
   }
 }
@@ -258,7 +259,8 @@ void ModListSortProxy::updateFilter(const QString& filter)
 {
   m_Filter = filter;
   updateFilterActive();
-  invalidateFilter();
+  beginFilterChange();
+  endFilterChange();
   emit filterInvalidated();
 }
 
@@ -563,7 +565,8 @@ void ModListSortProxy::setOptions(ModListSortProxy::FilterMode mode,
   if (m_FilterMode != mode || separators != m_FilterSeparators) {
     m_FilterMode       = mode;
     m_FilterSeparators = separators;
-    invalidateFilter();
+    beginFilterChange();
+    endFilterChange();
     emit filterInvalidated();
   }
 }

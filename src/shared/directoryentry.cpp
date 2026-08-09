@@ -26,6 +26,7 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 #include "windows_error.h"
 #include <filesystem>
 #include <log.h>
+#include <system_error>
 #include <utility.h>
 
 namespace MOShared
@@ -909,7 +910,8 @@ void DirectoryEntry::dump(const std::wstring& file) const
     auto e       = _wfopen_s(&f, file.c_str(), L"wb");
 
     if (e != 0 || !f) {
-      throw DumpFailed(std::format("failed to open, {} ({})", std::strerror(e), e));
+      throw DumpFailed(std::format("failed to open, {} ({})",
+                                   std::generic_category().message(e), e));
     }
 
     Guard g([&] {
@@ -947,7 +949,8 @@ void DirectoryEntry::dump(std::FILE* f, const std::wstring& parentPath) const
 
       if (std::fwrite(lineu8.data(), lineu8.size(), 1, f) != 1) {
         const auto e = errno;
-        throw DumpFailed(std::format("failed to write, {} ({})", std::strerror(e), e));
+        throw DumpFailed(std::format("failed to write, {} ({})",
+                                     std::generic_category().message(e), e));
       }
     }
   }

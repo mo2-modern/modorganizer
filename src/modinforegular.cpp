@@ -12,6 +12,7 @@
 #include <QApplication>
 #include <QDirIterator>
 #include <QSettings>
+#include <QTimeZone>
 
 #include <sstream>
 
@@ -363,9 +364,9 @@ void ModInfoRegular::nxmDescriptionAvailable(QString, int, QVariant,
     else
       setEndorsedState(EndorsedState::ENDORSED_FALSE);
   }
-  m_LastNexusQuery = QDateTime::currentDateTimeUtc();
-  m_NexusLastModified =
-      QDateTime::fromSecsSinceEpoch(result["updated_timestamp"].toInt(), Qt::UTC);
+  m_LastNexusQuery    = QDateTime::currentDateTimeUtc();
+  m_NexusLastModified = QDateTime::fromSecsSinceEpoch(
+      result["updated_timestamp"].toInt(), QTimeZone::UTC);
   m_MetaInfoChanged = true;
   saveMeta();
   disconnect(sender(), SIGNAL(descriptionAvailable(QString, int, QVariant, QVariant)));

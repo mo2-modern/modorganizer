@@ -1383,9 +1383,9 @@ void ModListView::dropEvent(QDropEvent* event)
 {
   // from Qt source
   QModelIndex index;
-  if (viewport()->rect().contains(event->pos())) {
-    index = indexAt(event->pos());
-    if (!index.isValid() || !visualRect(index).contains(event->pos()))
+  if (viewport()->rect().contains(event->position().toPoint())) {
+    index = indexAt(event->position().toPoint());
+    if (!index.isValid() || !visualRect(index).contains(event->position().toPoint()))
       index = QModelIndex();
   }
 

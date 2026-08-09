@@ -46,7 +46,8 @@ void PluginListSortProxy::setEnabledColumns(unsigned int columns)
 void PluginListSortProxy::updateFilter(const QString& filter)
 {
   m_CurrentFilter = filter;
-  invalidateFilter();
+  beginFilterChange();
+  endFilterChange();
 }
 
 bool PluginListSortProxy::filterAcceptsRow(int row, const QModelIndex&) const

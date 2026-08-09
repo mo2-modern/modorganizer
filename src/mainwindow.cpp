@@ -144,6 +144,7 @@ along with Mod Organizer.  If not, see <http://www.gnu.org/licenses/>.
 #include <QSizePolicy>
 #include <QSystemTrayIcon>
 #include <QTime>
+#include <QTimeZone>
 #include <QTimer>
 #include <QToolButton>
 #include <QToolTip>
@@ -3438,8 +3439,8 @@ void MainWindow::nxmModInfoAvailable(QString gameName, int modID, QVariant,
     }
 
     mod->setLastNexusQuery(QDateTime::currentDateTimeUtc());
-    mod->setNexusLastModified(
-        QDateTime::fromSecsSinceEpoch(result["updated_timestamp"].toInt(), Qt::UTC));
+    mod->setNexusLastModified(QDateTime::fromSecsSinceEpoch(
+        result["updated_timestamp"].toInt(), QTimeZone::UTC));
 
     m_OrganizerCore.modList()->notifyChange(ModInfo::getIndex(mod->name()));
   }
