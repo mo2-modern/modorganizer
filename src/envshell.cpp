@@ -58,8 +58,7 @@ public:
 
   WndProcFilter(function_type f) : m_f(std::move(f)) {}
 
-  bool nativeEventFilter(const QByteArray& eventType, void* message,
-                         qintptr* result) override
+  bool nativeEventFilter(const QByteArray&, void* message, qintptr* result) override
   {
     MSG* msg = (MSG*)message;
     if (!msg) {
@@ -252,8 +251,7 @@ bool ShellMenu::wndProc(HWND h, UINT m, WPARAM wp, LPARAM lp, LRESULT* out)
 // adapted from
 // https://devblogs.microsoft.com/oldnewthing/20040928-00/?p=37723
 //
-void ShellMenu::onMenuSelect(HWND hwnd, HMENU hmenu, int item, HMENU hmenuPopup,
-                             UINT flags)
+void ShellMenu::onMenuSelect(HWND, HMENU, int item, HMENU, UINT)
 {
   if (m_cm && item >= QCM_FIRST && item <= QCM_LAST) {
     WCHAR szBuf[MAX_PATH];
@@ -610,8 +608,7 @@ bool ShellMenuCollection::wndProc(HWND h, UINT m, WPARAM wp, LPARAM lp, LRESULT*
   return m_active->menu.wndProc(h, m, wp, lp, out);
 }
 
-void ShellMenuCollection::onMenuSelect(HWND hwnd, HMENU hmenu, int item,
-                                       HMENU hmenuPopup, UINT flags)
+void ShellMenuCollection::onMenuSelect(HWND, HMENU, int, HMENU hmenuPopup, UINT)
 {
   for (auto&& m : m_menus) {
     if (m.menu.getMenu() == hmenuPopup) {
