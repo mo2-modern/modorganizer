@@ -115,7 +115,7 @@ private:
   QString m_BaseDirectory;
   QStringList m_Archives;
   QDateTime m_CreationTime;
-  int m_Priority;
+  int m_Priority{};
   ModInfo::EModType m_ModType;
 };
 

@@ -20,7 +20,7 @@ class Loot : public QObject
 public:
   struct Message
   {
-    MOBase::log::Levels type;
+    MOBase::log::Levels type{};
     QString text;
 
     QString toMarkdown() const;

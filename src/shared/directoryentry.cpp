@@ -605,7 +605,7 @@ struct DirectoryEntry::Context
 {
   FilesOrigin& origin;
   DirectoryStats& stats;
-  std::stack<DirectoryEntry*> current;
+  std::stack<DirectoryEntry*> current{};
 };
 
 void DirectoryEntry::addFiles(env::DirectoryWalker& walker, FilesOrigin& origin,

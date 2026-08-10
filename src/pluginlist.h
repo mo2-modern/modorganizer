@@ -343,7 +343,7 @@ private:
     int priority;
     QString index;
     int loadOrder;
-    FILETIME time;
+    FILETIME time{};
     QString originName;
     bool hasMasterExtension;
     bool hasLightExtension;
@@ -426,7 +426,7 @@ private:
 
   QElapsedTimer m_LastCheck;
 
-  const MOBase::IPluginGame* m_GamePlugin;
+  const MOBase::IPluginGame* m_GamePlugin{};
   bool m_BlueprintPlugins = false;
 
   QVariant displayData(const QModelIndex& modelIndex) const;

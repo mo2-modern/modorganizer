@@ -153,7 +153,7 @@ public:
 private:
   void* m_cookie;
   QObject* m_object{};
-  std::set<QString> m_loaded;
+  std::set<QString> m_loaded{};
   std::function<void(Module)> m_f;
 };
 
@@ -200,10 +200,10 @@ public:
   void dump(const Settings& s) const;
 
 private:
-  mutable std::vector<Module> m_modules;
+  mutable std::vector<Module> m_modules{};
   mutable std::unique_ptr<WindowsInfo> m_windows{};
   mutable std::vector<SecurityProduct> m_security{};
-  mutable std::unique_ptr<Metrics> m_metrics;
+  mutable std::unique_ptr<Metrics> m_metrics{};
 
   // dumps all the disks involved in the settings
   //
@@ -249,7 +249,7 @@ public:
   QString toString() const;
 
 private:
-  QString m_name;
+  QString m_name{};
   StartType m_startType;
   Status m_status;
 };
@@ -264,7 +264,7 @@ struct Association
   QFileInfo executable{};
 
   // full command line associated with the file, no replacements
-  QString commandLine;
+  QString commandLine{};
 
   // command line _without_ the executable and with placeholders such as %1
   // replaced by the given file

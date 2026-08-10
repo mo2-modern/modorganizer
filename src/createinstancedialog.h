@@ -79,15 +79,15 @@ public:
   //
   struct CreationInfo
   {
-    Types type;
-    MOBase::IPluginGame* game;
+    Types type{};
+    MOBase::IPluginGame* game{};
     QString gameLocation;
     QString gameVariant;
     QString instanceName;
     QString dataPath;
     QString iniPath;
     Paths paths;
-    ProfileSettings profileSettings;
+    ProfileSettings profileSettings{};
   };
 
   CreateInstanceDialog(const PluginContainer& pc, Settings* s,

@@ -40,7 +40,7 @@ private:
   using FileMap = std::deque<FileEntryPtr>;
 
   mutable std::mutex m_Mutex;
-  FileMap m_Files;
+  FileMap m_Files{};
   boost::shared_ptr<OriginConnection> m_OriginConnection;
   std::atomic<FileIndex> m_NextIndex;
 

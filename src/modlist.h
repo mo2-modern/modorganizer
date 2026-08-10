@@ -414,7 +414,7 @@ private:
   SignalModRemoved m_ModRemoved;
   SignalModStateChanged m_ModStateChanged;
 
-  QElapsedTimer m_LastCheck;
+  QElapsedTimer m_LastCheck{};
 
   PluginContainer* m_PluginContainer;
 };

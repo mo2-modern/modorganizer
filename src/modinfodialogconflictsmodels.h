@@ -46,7 +46,7 @@ class ConflictListModel : public QAbstractItemModel
 public:
   struct Column
   {
-    QString caption;
+    QString caption{};
     const QString& (ConflictItem::*getText)() const;
   };
 
@@ -70,7 +70,7 @@ public:
   const ConflictItem* getItem(std::size_t row) const;
 
 private:
-  QTreeView* m_tree;
+  QTreeView* m_tree{};
   std::vector<Column> m_columns{};
   std::vector<ConflictItem> m_items{};
   int m_sortColumn;

@@ -194,7 +194,7 @@ private:
     DownloadID m_DownloadID{};
     QString m_FileName;
     QFile m_Output;
-    QNetworkReply* m_Reply;
+    QNetworkReply* m_Reply{};
     QElapsedTimer m_StartTime;
     qint64 m_PreResumeSize{};
     std::pair<int, QString> m_Progress;

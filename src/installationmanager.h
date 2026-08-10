@@ -344,7 +344,7 @@ private:
 
 private:
   // The plugin container, mostly to check if installer are enabled or not.
-  const PluginContainer* m_PluginContainer;
+  const PluginContainer* m_PluginContainer{};
 
   bool m_IsRunning;
 

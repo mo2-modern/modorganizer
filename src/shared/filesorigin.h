@@ -55,12 +55,12 @@ private:
   OriginID m_ID;
   bool m_Disabled;
   std::set<FileIndex> m_Files;
-  std::wstring m_Name;
-  std::wstring m_Path;
+  std::wstring m_Name{};
+  std::wstring m_Path{};
   int m_Priority;
-  boost::weak_ptr<FileRegister> m_FileRegister;
-  boost::weak_ptr<OriginConnection> m_OriginConnection;
-  mutable std::mutex m_Mutex;
+  boost::weak_ptr<FileRegister> m_FileRegister{};
+  boost::weak_ptr<OriginConnection> m_OriginConnection{};
+  mutable std::mutex m_Mutex{};
 };
 
 }  // namespace MOShared

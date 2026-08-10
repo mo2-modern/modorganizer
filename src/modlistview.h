@@ -207,10 +207,10 @@ private:  // private structures
     QComboBox* groupBy{};
 
     // the mod counter
-    QLCDNumber* counter;
+    QLCDNumber* counter{};
 
     // filters related
-    QLineEdit* filter;
+    QLineEdit* filter{};
     QLabel* currentCategory{};
     QPushButton* clearFilters{};
     QComboBox* filterSeparators{};
@@ -322,9 +322,9 @@ private:  // private functions
 public:  // member variables
   OrganizerCore* m_core;
   std::unique_ptr<FilterList> m_filters;
-  CategoryFactory* m_categories;
+  CategoryFactory* m_categories{};
   ModListViewUi ui;
-  ModListViewActions* m_actions;
+  ModListViewActions* m_actions{};
 
   ModListSortProxy* m_sortProxy;
   ModListByPriorityProxy* m_byPriorityProxy;

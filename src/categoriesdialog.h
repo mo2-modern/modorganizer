@@ -71,7 +71,7 @@ private:
 
 private:
   Ui::CategoriesDialog* ui;
-  PluginContainer* m_PluginContainer;
+  PluginContainer* m_PluginContainer{};
   int m_ContextRow{};
 
   int m_HighestID{};

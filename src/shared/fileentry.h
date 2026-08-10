@@ -74,14 +74,14 @@ public:
 
 private:
   FileIndex m_Index;
-  std::wstring m_Name;
+  std::wstring m_Name{};
   OriginID m_Origin;
   DataArchiveOrigin m_Archive;
   AlternativesVector m_Alternatives{};
   DirectoryEntry* m_Parent;
   mutable FILETIME m_FileTime{};
   uint64_t m_FileSize{}, m_CompressedFileSize{};
-  mutable std::mutex m_OriginsMutex;
+  mutable std::mutex m_OriginsMutex{};
 
   bool recurseParents(std::wstring& path, const DirectoryEntry* parent) const;
 };

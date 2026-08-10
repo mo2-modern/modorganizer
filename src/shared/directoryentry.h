@@ -214,13 +214,13 @@ private:
   boost::shared_ptr<OriginConnection> m_OriginConnection;
 
   std::wstring m_Name;
-  FilesMap m_Files;
+  FilesMap m_Files{};
   FilesLookup m_FilesLookup;
   SubDirectories m_SubDirectories{};
   SubDirectoriesLookup m_SubDirectoriesLookup;
 
   DirectoryEntry* m_Parent;
-  std::set<OriginID> m_Origins;
+  std::set<OriginID> m_Origins{};
   bool m_Populated;
   bool m_TopLevel;
   mutable std::mutex m_SubDirMutex;

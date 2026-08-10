@@ -141,7 +141,7 @@ public:
   const std::vector<Process>& children() const;
 
 private:
-  DWORD m_pid;
+  DWORD m_pid{};
   mutable std::optional<DWORD> m_ppid{};
   mutable std::optional<QString> m_name;
   std::vector<Process> m_children;

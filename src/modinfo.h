@@ -1008,7 +1008,7 @@ protected:
   OrganizerCore& m_Core;
 
   // the index of the mod in s_Collection, only valid after updateIndices()
-  int m_Index;
+  int m_Index{};
 
   int m_PrimaryCategory;
   std::set<int> m_Categories;

@@ -53,7 +53,7 @@ signals:
 private:
   OrganizerCore& m_core;
   PluginContainer& m_plugins;
-  QTreeView* m_tree;
+  QTreeView* m_tree{};
   FileTreeModel* m_model;
 
   FileTreeItem* singleSelection();

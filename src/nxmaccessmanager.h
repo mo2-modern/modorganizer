@@ -250,7 +250,7 @@ private:
     Invalid
   };
 
-  QWidget* m_TopLevel;
+  QWidget* m_TopLevel{};
   Settings* m_Settings;
   mutable std::unique_ptr<ValidationProgressDialog> m_ProgressDialog;
   QString m_MOVersion;

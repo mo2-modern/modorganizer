@@ -40,7 +40,7 @@ private:
   std::atomic<OriginID> m_NextID{};
   std::map<OriginID, FilesOrigin> m_Origins;
   std::map<std::wstring, OriginID> m_OriginsNameMap{};
-  mutable std::mutex m_Mutex;
+  mutable std::mutex m_Mutex{};
 
   OriginID createID();
 

@@ -67,13 +67,13 @@ private:
   struct PluginListViewUi
   {
     // the plguin counter
-    QLCDNumber* counter;
+    QLCDNumber* counter{};
 
     // the filter
-    QLineEdit* filter;
+    QLineEdit* filter{};
   };
 
-  OrganizerCore* m_core;
+  OrganizerCore* m_core{};
   PluginListViewUi ui;
 
   PluginListSortProxy* m_sortProxy;

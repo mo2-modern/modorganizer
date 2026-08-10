@@ -17,8 +17,8 @@ struct DirectoryEntryFileKey
     return std::hash<std::wstring>()(value);
   }
 
-  std::wstring value;
-  const std::size_t hash;
+  std::wstring value{};
+  const std::size_t hash{};
 };
 
 class DirectoryEntry;

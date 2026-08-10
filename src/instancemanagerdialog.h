@@ -93,7 +93,7 @@ private:
   PluginContainer& m_pc;
   std::vector<std::unique_ptr<Instance>> m_instances;
   MOBase::FilterWidget m_filter;
-  QStandardItemModel* m_model;
+  QStandardItemModel* m_model{};
   bool m_restartOnSelect;
 
   // refreshes the list instances from disk
