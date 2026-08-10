@@ -140,7 +140,7 @@ private:
   QFile m_UpdateFile;
   QNetworkReply* m_Reply;
   QProgressDialog* m_Progress{nullptr};
-  bool m_Canceled;
+  bool m_Canceled{};
   int m_Attempts;
 
   GitHub m_GitHub;

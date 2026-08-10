@@ -351,8 +351,8 @@ public:
   const QStringList& untouched() const;
 
 private:
-  po::options_description m_visibleOptions, m_allOptions;
-  po::positional_options_description m_positional;
+  po::options_description m_visibleOptions{}, m_allOptions{};
+  po::positional_options_description m_positional{};
   std::vector<std::unique_ptr<Command>> m_commands;
   po::variables_map m_vm;
   MOShortcut m_shortcut;

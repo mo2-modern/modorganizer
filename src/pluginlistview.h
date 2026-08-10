@@ -77,8 +77,8 @@ private:
   PluginListViewUi ui;
 
   PluginListSortProxy* m_sortProxy;
-  ModListViewActions* m_modActions;
-  ViewMarkingScrollBar* m_Scrollbar;
+  ModListViewActions* m_modActions{};
+  ViewMarkingScrollBar* m_Scrollbar{};
 
   bool m_didUpdateMasterList;
 };

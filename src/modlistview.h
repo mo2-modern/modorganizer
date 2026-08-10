@@ -204,19 +204,19 @@ private:  // private structures
   struct ModListViewUi
   {
     // the group by combo box
-    QComboBox* groupBy;
+    QComboBox* groupBy{};
 
     // the mod counter
     QLCDNumber* counter;
 
     // filters related
     QLineEdit* filter;
-    QLabel* currentCategory;
-    QPushButton* clearFilters;
-    QComboBox* filterSeparators;
+    QLabel* currentCategory{};
+    QPushButton* clearFilters{};
+    QComboBox* filterSeparators{};
 
     // the plugin list (for highlights)
-    PluginListView* pluginList;
+    PluginListView* pluginList{};
   };
 
   struct MarkerInfos

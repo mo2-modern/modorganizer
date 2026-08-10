@@ -72,9 +72,9 @@ private:
 private:
   Ui::CategoriesDialog* ui;
   PluginContainer* m_PluginContainer;
-  int m_ContextRow;
+  int m_ContextRow{};
 
-  int m_HighestID;
+  int m_HighestID{};
   std::set<int> m_IDs;
   std::vector<CategoryFactory::NexusCategory> m_NexusCategories;
 };

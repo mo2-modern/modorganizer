@@ -323,7 +323,7 @@ void DirectoryRefresher::addModToStructure(DirectoryEntry* directoryStructure,
 
 struct ModThread
 {
-  GameFeatures* gameFeatures;
+  GameFeatures* gameFeatures{};
   DirectoryRefreshProgress* progress = nullptr;
   DirectoryEntry* ds                 = nullptr;
   std::wstring modName;

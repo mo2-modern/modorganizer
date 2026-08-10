@@ -53,7 +53,7 @@ private:
   MOBase::ISaveGameInfoWidget* m_CurrentSaveView;
 
   QTimer m_SavesWatcherTimer;
-  QFileSystemWatcher m_SavesWatcher;
+  QFileSystemWatcher m_SavesWatcher{};
 
   void onContextMenu(const QPoint& pos);
   void deleteSavegame();

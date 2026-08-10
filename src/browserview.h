@@ -70,7 +70,7 @@ protected:
 
 private:
   QString m_FindPattern;
-  bool m_MiddleClick;
+  bool m_MiddleClick{};
 };
 
 #endif  // NEXUSVIEW_H

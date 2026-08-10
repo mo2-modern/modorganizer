@@ -83,30 +83,30 @@ struct DirectoryStats
 
   std::string mod;
 
-  std::chrono::nanoseconds dirTimes;
-  std::chrono::nanoseconds fileTimes;
-  std::chrono::nanoseconds sortTimes;
+  std::chrono::nanoseconds dirTimes{};
+  std::chrono::nanoseconds fileTimes{};
+  std::chrono::nanoseconds sortTimes{};
 
-  std::chrono::nanoseconds subdirLookupTimes;
-  std::chrono::nanoseconds addDirectoryTimes;
+  std::chrono::nanoseconds subdirLookupTimes{};
+  std::chrono::nanoseconds addDirectoryTimes{};
 
-  std::chrono::nanoseconds filesLookupTimes;
-  std::chrono::nanoseconds addFileTimes;
-  std::chrono::nanoseconds addOriginToFileTimes;
-  std::chrono::nanoseconds addFileToOriginTimes;
-  std::chrono::nanoseconds addFileToRegisterTimes;
+  std::chrono::nanoseconds filesLookupTimes{};
+  std::chrono::nanoseconds addFileTimes{};
+  std::chrono::nanoseconds addOriginToFileTimes{};
+  std::chrono::nanoseconds addFileToOriginTimes{};
+  std::chrono::nanoseconds addFileToRegisterTimes{};
 
-  int64_t originExists;
-  int64_t originCreate;
-  int64_t originsNeededEnabled;
+  int64_t originExists{};
+  int64_t originCreate{};
+  int64_t originsNeededEnabled{};
 
-  int64_t subdirExists;
-  int64_t subdirCreate;
+  int64_t subdirExists{};
+  int64_t subdirCreate{};
 
-  int64_t fileExists;
-  int64_t fileCreate;
-  int64_t filesInsertedInRegister;
-  int64_t filesAssignedInRegister;
+  int64_t fileExists{};
+  int64_t fileCreate{};
+  int64_t filesInsertedInRegister{};
+  int64_t filesAssignedInRegister{};
 
   DirectoryStats();
 

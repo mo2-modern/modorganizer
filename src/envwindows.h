@@ -38,7 +38,7 @@ public:
     QString ID;
 
     // some sub-build number, undocumented, may be empty
-    DWORD UBR;
+    DWORD UBR{};
 
     Release() : UBR(0) {}
   };

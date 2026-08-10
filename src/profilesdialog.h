@@ -130,7 +130,7 @@ private slots:
 private:
   Ui::ProfilesDialog* ui;
   GameFeatures& m_GameFeatures;
-  QListWidget* m_ProfilesList;
+  QListWidget* m_ProfilesList{};
   bool m_FailState;
   MOBase::IPluginGame const* m_Game;
   QString m_ActiveProfileName;

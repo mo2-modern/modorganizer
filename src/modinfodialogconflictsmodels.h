@@ -29,13 +29,13 @@ public:
   bool canExplore() const;
 
 private:
-  QString m_before;
-  QString m_relativeName;
-  QString m_after;
+  QString m_before{};
+  QString m_relativeName{};
+  QString m_after{};
   MOShared::FileIndex m_index;
-  QString m_fileName;
+  QString m_fileName{};
   bool m_hasAltOrigins;
-  QString m_altOrigin;
+  QString m_altOrigin{};
   bool m_isArchive;
 };
 
@@ -71,10 +71,10 @@ public:
 
 private:
   QTreeView* m_tree;
-  std::vector<Column> m_columns;
-  std::vector<ConflictItem> m_items;
+  std::vector<Column> m_columns{};
+  std::vector<ConflictItem> m_items{};
   int m_sortColumn;
-  Qt::SortOrder m_sortOrder;
+  Qt::SortOrder m_sortOrder{};
 
   const ConflictItem* itemFromIndex(const QModelIndex& index) const;
   QModelIndex indexFromItem(const ConflictItem* item, int col);

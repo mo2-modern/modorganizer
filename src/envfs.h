@@ -11,7 +11,7 @@ struct File
 {
   std::wstring name;
   std::wstring lcname;
-  FILETIME lastModified;
+  FILETIME lastModified{};
   uint64_t size;
 
   File(std::wstring_view name, FILETIME ft, uint64_t size);

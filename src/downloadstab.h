@@ -23,7 +23,7 @@ private:
   struct DownloadsTabUi
   {
     QPushButton* refresh;
-    QPushButton* queryInfos;
+    QPushButton* queryInfos{};
     DownloadListView* list;
     QCheckBox* showHidden;
     QLineEdit* filter;

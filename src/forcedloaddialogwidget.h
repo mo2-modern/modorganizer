@@ -35,7 +35,7 @@ private slots:
 
 private:
   Ui::ForcedLoadDialogWidget* ui;
-  bool m_Forced;
+  bool m_Forced{};
   const MOBase::IPluginGame* m_GamePlugin;
 };
 

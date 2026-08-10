@@ -531,7 +531,7 @@ private:
     int m_Track;
     QByteArray m_Hash;
     QMap<QNetworkReply::NetworkError, QList<int>> m_AllowedErrors;
-    bool m_IgnoreGenericErrorHandler;
+    bool m_IgnoreGenericErrorHandler{};
 
     NXMRequestInfo(int modID, Type type, QVariant userData, const QString& subModule,
                    const QString& gameNexusName);

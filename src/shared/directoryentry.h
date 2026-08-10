@@ -216,7 +216,7 @@ private:
   std::wstring m_Name;
   FilesMap m_Files;
   FilesLookup m_FilesLookup;
-  SubDirectories m_SubDirectories;
+  SubDirectories m_SubDirectories{};
   SubDirectoriesLookup m_SubDirectoriesLookup;
 
   DirectoryEntry* m_Parent;

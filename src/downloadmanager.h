@@ -191,18 +191,18 @@ private:
     RollingMeanAcc m_DownloadTimeAcc;
     qint64 m_DownloadLast;
     qint64 m_DownloadTimeLast;
-    DownloadID m_DownloadID;
+    DownloadID m_DownloadID{};
     QString m_FileName;
     QFile m_Output;
     QNetworkReply* m_Reply;
     QElapsedTimer m_StartTime;
-    qint64 m_PreResumeSize;
+    qint64 m_PreResumeSize{};
     std::pair<int, QString> m_Progress;
     bool m_HasData;
-    DownloadState m_State;
-    int m_CurrentUrl;
+    DownloadState m_State{};
+    int m_CurrentUrl{};
     QStringList m_Urls;
-    qint64 m_ResumePos;
+    qint64 m_ResumePos{};
     qint64 m_TotalSize;
     QDateTime m_Created;  // used as a cache in DownloadManager::getFileTime, may not be
                           // valid elsewhere
@@ -210,11 +210,11 @@ private:
     QStringList m_GamesToQuery;
     QString m_RemoteFileName;
 
-    int m_Tries;
+    int m_Tries{};
     bool m_ReQueried;
     bool m_AskIfNotFound;
 
-    quint32 m_TaskProgressId;
+    quint32 m_TaskProgressId{};
 
     MOBase::ModRepositoryFileInfo* m_FileInfo{nullptr};
 
@@ -823,7 +823,7 @@ private:
 
   bool m_ShowHidden;
 
-  MOBase::IPluginGame const* m_ManagedGame;
+  MOBase::IPluginGame const* m_ManagedGame{};
 };
 
 #endif  // DOWNLOADMANAGER_H

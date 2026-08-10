@@ -142,7 +142,7 @@ public:
 
 private:
   DWORD m_pid;
-  mutable std::optional<DWORD> m_ppid;
+  mutable std::optional<DWORD> m_ppid{};
   mutable std::optional<QString> m_name;
   std::vector<Process> m_children;
 };

@@ -102,7 +102,7 @@ public:
   void close();
 
 private:
-  std::unique_ptr<QSplashScreen> ss_;
+  std::unique_ptr<QSplashScreen> ss_{};
 
   QString getSplashPath(const Settings& settings, const QString& dataPath,
                         const MOBase::IPluginGame* game) const;

@@ -409,7 +409,7 @@ private:
 
   // "regular" here means mods with modifiable priority (i.e. not backups
   // or overwrite)
-  std::size_t m_NumRegularMods;
+  std::size_t m_NumRegularMods{};
 
   MOBase::DelayedFileWriter m_ModListWriter;
 };

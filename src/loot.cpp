@@ -59,7 +59,7 @@ private:
   env::HandlePtr m_stdout;
   env::HandlePtr m_readEvent;
   char m_buffer[bufferSize];
-  OVERLAPPED m_ov;
+  OVERLAPPED m_ov{};
   bool m_ioPending;
 
   HANDLE createPipe()

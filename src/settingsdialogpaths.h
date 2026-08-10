@@ -28,7 +28,7 @@ private:
 
   void normalizePath(QLineEdit* lineEdit);
 
-  QDir m_gameDir;
+  QDir m_gameDir{};
 };
 
 #endif  // SETTINGSDIALOGPATHS_H

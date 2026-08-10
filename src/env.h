@@ -130,9 +130,9 @@ private:
   bool m_hasConsole;
 
   // standard streams
-  FILE* m_in;
-  FILE* m_out;
-  FILE* m_err;
+  FILE* m_in{};
+  FILE* m_out{};
+  FILE* m_err{};
 };
 
 class ModuleNotification
@@ -152,7 +152,7 @@ public:
 
 private:
   void* m_cookie;
-  QObject* m_object;
+  QObject* m_object{};
   std::set<QString> m_loaded;
   std::function<void(Module)> m_f;
 };
@@ -201,8 +201,8 @@ public:
 
 private:
   mutable std::vector<Module> m_modules;
-  mutable std::unique_ptr<WindowsInfo> m_windows;
-  mutable std::vector<SecurityProduct> m_security;
+  mutable std::unique_ptr<WindowsInfo> m_windows{};
+  mutable std::vector<SecurityProduct> m_security{};
   mutable std::unique_ptr<Metrics> m_metrics;
 
   // dumps all the disks involved in the settings
@@ -261,14 +261,14 @@ QString toString(Service::Status st);
 struct Association
 {
   // path to the executable associated with the file
-  QFileInfo executable;
+  QFileInfo executable{};
 
   // full command line associated with the file, no replacements
   QString commandLine;
 
   // command line _without_ the executable and with placeholders such as %1
   // replaced by the given file
-  QString formattedCommandLine;
+  QString formattedCommandLine{};
 };
 
 // returns the associated executable and command line, executable is empty on

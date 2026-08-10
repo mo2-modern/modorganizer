@@ -37,9 +37,9 @@ public:
   void changeNameLookup(const std::wstring& oldName, const std::wstring& newName);
 
 private:
-  std::atomic<OriginID> m_NextID;
+  std::atomic<OriginID> m_NextID{};
   std::map<OriginID, FilesOrigin> m_Origins;
-  std::map<std::wstring, OriginID> m_OriginsNameMap;
+  std::map<std::wstring, OriginID> m_OriginsNameMap{};
   mutable std::mutex m_Mutex;
 
   OriginID createID();

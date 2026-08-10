@@ -290,7 +290,7 @@ private:
 
   int m_OldExecutableIndex;
 
-  QAction* m_ContextAction;
+  QAction* m_ContextAction{};
 
   CategoryFactory& m_CategoryFactory;
 

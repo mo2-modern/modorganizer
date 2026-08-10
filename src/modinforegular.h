@@ -500,7 +500,7 @@ private:
   QString m_NexusDescription;
   QString m_Repository;
   QString m_CustomURL;
-  bool m_HasCustomURL;
+  bool m_HasCustomURL{};
 
   // Game name for the mod, can be different from the actual game running in MO2
   // e.g., for Skyrim / Skyrim SE.
@@ -512,14 +512,14 @@ private:
   QDateTime m_LastNexusQuery;
   QDateTime m_LastNexusUpdate;
   QDateTime m_NexusLastModified;
-  int m_NexusCategory;
+  int m_NexusCategory{};
   QString m_Author;
   QString m_Uploader;
   QString m_UploaderUrl;
 
   QColor m_Color;
 
-  int m_NexusID;
+  int m_NexusID{};
   // Ordered by install time, oldest first; back is the most recent install.
   std::vector<std::pair<int, int>> m_InstalledFileIDs;
 
@@ -530,7 +530,7 @@ private:
   bool m_IsAlternate;
   bool m_Converted;
   bool m_Validated;
-  int m_NexusFileStatus;
+  int m_NexusFileStatus{};
   MOBase::VersionInfo m_NewestVersion;
   MOBase::VersionInfo m_IgnoredVersion;
 
