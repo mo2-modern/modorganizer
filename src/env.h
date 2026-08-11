@@ -154,7 +154,7 @@ private:
   void* m_cookie;
   QObject* m_object{};
   std::set<QString> m_loaded{};
-  std::function<void(Module)> m_f;
+  std::function<void(Module)> m_f{};
 };
 
 // represents the process's environment

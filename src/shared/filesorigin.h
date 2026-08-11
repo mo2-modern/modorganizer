@@ -54,7 +54,7 @@ public:
 private:
   OriginID m_ID;
   bool m_Disabled;
-  std::set<FileIndex> m_Files;
+  std::set<FileIndex> m_Files{};
   std::wstring m_Name{};
   std::wstring m_Path{};
   int m_Priority;

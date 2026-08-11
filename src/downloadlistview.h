@@ -123,7 +123,7 @@ private slots:
   void issueQueryInfoMd5(int index);
 
 private:
-  DownloadManager* m_Manager;
+  DownloadManager* m_Manager{};
   DownloadList* m_SourceModel = 0;
 
   void resizeEvent(QResizeEvent* event);

@@ -28,7 +28,7 @@ public:
   void invoke(const QPoint& p, int cmd);
 
 private:
-  QMainWindow* m_mw;
+  QMainWindow* m_mw{};
   std::vector<QFileInfo> m_files;
   COMPtr<IContextMenu> m_cm;
   COMPtr<IContextMenu2> m_cm2;
@@ -68,7 +68,7 @@ private:
     ShellMenu menu;
   };
 
-  QMainWindow* m_mw;
+  QMainWindow* m_mw{};
   std::vector<QString> m_details;
   std::vector<MenuInfo> m_menus;
   MenuInfo* m_active;
