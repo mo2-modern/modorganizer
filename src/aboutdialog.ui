@@ -281,6 +281,16 @@
                                 <string notr="true">RJ</string>
                               </property>
                             </item>
+                            <item>
+                              <property name="text">
+                                <string notr="true">SimplisticMind</string>
+                              </property>
+                            </item>
+                            <item>
+                              <property name="text">
+                                <string notr="true">TwistedModding</string>
+                              </property>
+                            </item>
                           </widget>
                         </item>
                       </layout>
